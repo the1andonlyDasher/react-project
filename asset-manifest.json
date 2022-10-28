@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-project/static/css/main.d0c036be.css",
+    "main.js": "/react-project/static/js/main.a9442b76.js",
+    "static/media/bg2.png": "/react-project/static/media/bg2.b95a909b704101fd0d8b.png",
+    "static/media/logo.png": "/react-project/static/media/logo.b8d31f032a880726b601.png",
+    "static/media/page1.png": "/react-project/static/media/page1.435707d1a6de6a66f821.png",
+    "static/media/page3.png": "/react-project/static/media/page3.1b64295cb3a8b1344614.png",
+    "static/media/page2.png": "/react-project/static/media/page2.d62a24fc1f545a960f16.png",
+    "static/media/blue1.jpg": "/react-project/static/media/blue1.0a8e144404fe1d4af5e3.jpg",
+    "static/media/Gruppe_7.svg": "/react-project/static/media/Gruppe_7.8cf29e524c838648229b60e4aad5ae4e.svg",
+    "static/media/Gruppe_6.svg": "/react-project/static/media/Gruppe_6.2f7da05ab0f72d3b6eac1e955185b17b.svg",
+    "index.html": "/react-project/index.html",
+    "static/media/Gruppe_3.svg": "/react-project/static/media/Gruppe_3.2105343d20c06d4486e5c7436aecb370.svg",
+    "static/media/Gruppe_1.svg": "/react-project/static/media/Gruppe_1.fe9a269a2f679fd30286f733fd9b2dec.svg",
+    "main.d0c036be.css.map": "/react-project/static/css/main.d0c036be.css.map",
+    "main.a9442b76.js.map": "/react-project/static/js/main.a9442b76.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0c036be.css",
+    "static/js/main.a9442b76.js"
+  ]
+}
