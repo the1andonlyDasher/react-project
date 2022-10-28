@@ -1,0 +1,3 @@
+window.completedAnimation = {
+  status: false,
+};
