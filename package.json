@@ -2,7 +2,7 @@
   "name": "wicked-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://the1andonlydasher.github.io/react-project/",
+  "homepage": "https://the1andonlydasher.github.io/wicked-hand/",
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",

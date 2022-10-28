@@ -124,7 +124,7 @@
   border: 1px solid var(--clr-contrast-750);
 }
 
-.base__cover i {
+.base__cover svg {
   font-size: var(--fs-header);
 }
 
@@ -258,11 +258,11 @@
   cursor: pointer;
 }
 
-.base__cover i {
+.base__cover svg {
   @extend %trans;
 }
 
-.base__content span i {
+.base__content span svg {
   @extend %trans;
   transform: rotate(0deg);
 }
@@ -330,7 +330,7 @@ p.fade-in {
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    &:hover i {
+    &:hover svg {
       transform: translateX(20px);
     }
   }

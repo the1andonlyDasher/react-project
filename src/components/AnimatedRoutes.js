@@ -22,7 +22,7 @@ function AnimatedRoutes() {
         //initial={false}
       >
         <Routes location={location} key={location.pathname}>
-          <Route exact path="/" element={<HomePage />}></Route>
+          <Route exact path="/wicked-hand" element={<HomePage />}></Route>
           <Route exact path="/DataPage" element={<DataPage />}></Route>
           <Route exact path="/ImprintPage" element={<ImprintPage />}></Route>
         </Routes>

@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 export const BaseContent = ({ title, subtitle, icon }) => {
   const [triggered, setTrigger] = useState(false);
   const item = useRef();
@@ -16,7 +18,7 @@ export const BaseContent = ({ title, subtitle, icon }) => {
       const nH = document.body.offsetHeight + sH;
       document.body.style.height = `${nH}px`;
     }
-    item.current.querySelector("i").classList.toggle("close__toggle");
+    item.current.querySelector("svg").classList.toggle("close__toggle");
     //   item.classList.toggle("read");
     //   item.querySelector(".bg-img").classList.toggle("img__read");
     item.current.querySelector("p").classList.toggle("p__read");
@@ -55,7 +57,7 @@ export const BaseContent = ({ title, subtitle, icon }) => {
           <img src={icon} width="47" height="34" alt="" />
         </div>
         <span onClick={handleClick}>
-          <i className="fa-solid fa-chevron-down"></i>
+          <FontAwesomeIcon icon={faChevronDown} />
         </span>
       </div>
     </>

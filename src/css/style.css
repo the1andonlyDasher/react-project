@@ -2498,11 +2498,26 @@ div[data-scroll-content] .frame:first-child header {
   display: none;
 }
 
-.bar1_clicked, .white, #burgermenu {
+.bar1_clicked, .white, #burgermenu > div > div, #burgermenu > div, #burgermenu {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
   -webkit-transition: 0.5s ease-in-out;
+}
+
+#burgermenu > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#burgermenu > div {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 #burgermenu {
@@ -2510,13 +2525,26 @@ div[data-scroll-content] .frame:first-child header {
   overflow: hidden;
   position: absolute;
   cursor: pointer;
-  display: inline-block;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-right: 20px;
   height: 40px;
   width: 40px;
   right: 0;
+  z-index: 2;
+}
+#burgermenu > div {
+  justify-content: space-evenly;
+  flex-direction: column;
+  position: absolute;
+}
+#burgermenu > div > div {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  animation: empty 0s;
+  animation-play-state: paused;
 }
 @media screen and (min-width: 880px) {
   #burgermenu {
@@ -2525,6 +2553,81 @@ div[data-scroll-content] .frame:first-child header {
   }
 }
 
+@keyframes empty {}
+@keyframes glitch {
+  0% {
+    filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
+  }
+  1% {
+    filter: drop-shadow(0.1em 0 0 #1ea46f);
+  }
+  3% {
+    filter: drop-shadow(-0.12em -0.9em 0 rgba(113, 255, 134, 0.5450980392));
+  }
+  5% {
+    filter: drop-shadow(0.09em 0.04em 0 #1c7555);
+  }
+  15% {
+    filter: drop-shadow(0.1em 0 0 #1ea46f);
+  }
+  17% {
+    filter: drop-shadow(-0.12em -0.15em 0 #71ffe0);
+  }
+  18% {
+    filter: drop-shadow(0.9em 0.12em 0 #1c7555);
+  }
+  22% {
+    filter: drop-shadow(-0.15em -0.07em 0 rgba(30, 164, 110, 0.5607843137));
+  }
+  25% {
+    filter: drop-shadow(0.07em 0.13em 0 #71ff86);
+  }
+  26% {
+    filter: drop-shadow(-0.12em -0.12em 0 #1c7555);
+  }
+  27% {
+    filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
+  }
+  49% {
+    filter: drop-shadow(-0.12em -0.07em 0 #54a41e);
+  }
+  50% {
+    filter: drop-shadow(0.16em 0.09em 0 rgba(113, 255, 134, 0.3764705882));
+  }
+  53% {
+    filter: drop-shadow(-0.12em -0.12em 0 #1c7555);
+  }
+  54% {
+    filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
+  }
+  75% {
+    filter: drop-shadow(0.05em 0.13em 0 #1ea46f);
+  }
+  77% {
+    filter: drop-shadow(0.13em 0 0 #71ff86);
+  }
+  78% {
+    filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
+  }
+  93% {
+    filter: drop-shadow(0 -0.2em 0 #1c7555);
+  }
+  95% {
+    filter: drop-shadow(0.1em 0.15em 0 #1ea46f);
+  }
+  97% {
+    filter: drop-shadow(0.13em 0 0 #71ff86);
+  }
+  98% {
+    filter: drop-shadow(0 -0.14em 0 #1c7555);
+  }
+  99% {
+    filter: drop-shadow(-0.15em 0 0 #1ea46f);
+  }
+  100% {
+    filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
+  }
+}
 .white {
   background-color: var(--clr-contrast-100) !important;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
@@ -3797,7 +3900,7 @@ form .btn-group .btn-group:nth-child(n+2) {
   align-items: center;
 }
 
-.no__bg, .fade-out, .fade-in, p.fade-in, .base__content p, .base__content .panel, .base__content span i, .base__cover i, .base__content span, .base__content .h5__read, .base__icon-bg, .base__cover :is(h4, h5), .img__read, .base__content .bg-img, .base__content h5 {
+.no__bg, .fade-out, .fade-in, p.fade-in, .base__content p, .base__content .panel, .base__content span svg, .base__cover svg, .base__content span, .base__content .h5__read, .base__icon-bg, .base__cover :is(h4, h5), .img__read, .base__content .bg-img, .base__content h5 {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -3887,7 +3990,7 @@ form .btn-group .btn-group:nth-child(n+2) {
   border: 1px solid var(--clr-contrast-750);
 }
 
-.base__cover i {
+.base__cover svg {
   font-size: var(--fs-header);
 }
 
@@ -4027,7 +4130,7 @@ form .btn-group .btn-group:nth-child(n+2) {
   cursor: pointer;
 }
 
-.base__content span i {
+.base__content span svg {
   transform: rotate(0deg);
 }
 
@@ -4094,7 +4197,7 @@ p.fade-in {
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
-.no__bg:hover:hover i {
+.no__bg:hover:hover svg {
   transform: translateX(20px);
 }
 

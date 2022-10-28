@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import "../js/scroll";
 
-export const DomGL = ({ children }) => {
+export const DomGL = React.forwardRef((props, ref) => {
   const dom = useRef();
 
   useEffect(() => {
@@ -32,9 +32,9 @@ export const DomGL = ({ children }) => {
     <>
       <div id="data-scroll" className="main">
         <div id="data-scroll-content" ref={dom}>
-          {children}
+          {props.children}
         </div>
       </div>
     </>
   );
-};
+});

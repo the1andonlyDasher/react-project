@@ -272,7 +272,7 @@ const Window = () => {
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         setChanged(true);
-        console.log(mutation.type);
+        // console.log(mutation.type);
         if (visible === true) {
           setupScene();
         }
