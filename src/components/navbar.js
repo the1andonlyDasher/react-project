@@ -1,17 +1,16 @@
 //  src/compnents/navbar.js
 
-import React, { createRef, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion, useAnimationControls } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import "../js/setBlurry";
-import { DomGL } from "../js/DomGL";
 const logo = require("../images/logo.png");
 
 gsap.registerPlugin(ScrollToPlugin);
 
-export default function Navbar() {
+export default function Navbar(props) {
   useEffect(() => {
     const handler = () => {
       setShrunk((isShrunk) => {
@@ -48,13 +47,11 @@ export default function Navbar() {
   }, []);
 
   const [isShrunk, setShrunk] = useState(false);
-  const [changed, setChanged] = useState(false);
   const [click, setClick] = useState(false);
-  const ref = React.createRef();
   const handleClick = () => {
     setClick(!click);
     window.setBlurry.is = !click;
-    ref.current.style.opacity = 0;
+    document.querySelector("main").style.opacity = click ? 1 : 0;
   };
   const closeMobileMenu = (e) => {
     const attribute = e.currentTarget.getAttribute("href");
@@ -149,6 +146,7 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
+        {...props}
         variants={variants}
         initial="initial"
         animate="enter"

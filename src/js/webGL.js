@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, createContext } from "react";
 import * as THREE from "three";
 import fragment from "../components/gl/fragment";
 import vertex from "../components/gl/vertex";
@@ -22,7 +22,6 @@ const Window = () => {
   const windowRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [changed, setChanged] = useState(false);
-  const [blurry, setBlurry] = useState(false);
 
   const setupScene = () => {
     // window.setBlurry.is = false;
@@ -297,12 +296,7 @@ const Window = () => {
         initial={{ opacity: 0, transition }}
         animate={{ opacity: 1, transition }}
         exit={{ opacity: 0, transition }}
-        onAnimationStart={() => {
-          setBlurry(true);
-          setTimeout(() => {
-            setBlurry(false);
-          }, 500);
-        }}
+        onAnimationStart={() => {}}
         onAnimationComplete={() => {
           setVisible(true);
         }}
@@ -314,4 +308,4 @@ const Window = () => {
   );
 };
 
-export default Window;
+export { Window };
