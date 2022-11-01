@@ -166,6 +166,7 @@ while (i < counter) {
   i += 1;
 }
 const bgGeometry = new THREE.PlaneGeometry(120, 80, 1, 1);
+
 const bgMaterial = new THREE.ShaderMaterial({
   uniforms: {
     iProg: { type: "f", value: 0 },
