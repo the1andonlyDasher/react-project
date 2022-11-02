@@ -12,7 +12,6 @@ import { GlitchPass } from "../js/glitchPass.js";
 import "../js/checkAnim";
 import "../js/scroll";
 import "../js/setBlurry";
-import "../js/navActive";
 
 let button = require("../images/button.png");
 
@@ -24,7 +23,23 @@ const Window = () => {
   const windowRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [changed, setChanged] = useState(false);
-  const { buttonActive } = React.createContext(true);
+
+  useEffect(() => {
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        setChanged(true);
+        // console.log(mutation.type);
+        if (visible === true) {
+          setupScene();
+        }
+      });
+    });
+
+    var config = { attributes: false, childList: true, characterData: false };
+
+    observer.observe(document.getElementById("data-scroll-content"), config);
+    setupScene();
+  });
 
   const setupScene = () => {
     // renderer
@@ -182,16 +197,6 @@ const Window = () => {
           function animate(time) {
             time *= 0.001;
             mesh.material.uniforms.iTime.value = time * prog.ress;
-            if (window.nav.Active === true) {
-              meshes.forEach((el) => {
-                scene.remove(el);
-              });
-            } else {
-              meshes.forEach((el) => {
-                scene.add(el);
-              });
-            }
-
             setY();
             requestAnimationFrame(animate);
           }
@@ -220,13 +225,6 @@ const Window = () => {
       texture.minFilter = THREE.LinearMipmapLinearFilter;
       texture.generateMipmaps = false;
     });
-
-    if (changed === true) {
-      meshes.forEach((el) => {
-        el.geometry.dispose();
-        el.material.dispose();
-      });
-    }
 
     // add function to make canvas adaptive
     function resizeRendererToDisplaySize(renderer) {
@@ -267,11 +265,6 @@ const Window = () => {
 
       if (window.setBlurry.is === true || window.hoverItem.hovering === true) {
         glitchPass.enabled = true;
-        if ((window.hoverItem.enabled = true)) {
-          glitchPass.goWild = false;
-        } else {
-          glitchPass.goWild = true;
-        }
       } else {
         glitchPass.enabled = false;
       }
@@ -279,23 +272,6 @@ const Window = () => {
 
     animate();
   };
-
-  useEffect(() => {
-    var observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        setChanged(true);
-        // console.log(mutation.type);
-        if (visible === true) {
-          setupScene();
-        }
-      });
-    });
-
-    var config = { attributes: false, childList: true, characterData: false };
-
-    observer.observe(document.getElementById("data-scroll-content"), config);
-    setupScene();
-  });
 
   const transition = {
     duration: 1,

@@ -10,7 +10,7 @@ export const DomGL = React.forwardRef((props, ref) => {
 
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
-        console.log(mutation.type);
+        //console.log(mutation.type);
         document.body.style.height = `${dom.current.offsetHeight}px`;
         // window.scrollTo(0, 0);
       });

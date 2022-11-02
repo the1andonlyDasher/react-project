@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   const variants = {
     initial: {
-      clipPath: "clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%)",
+      clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
       filter: "sepia(1) hue-rotate(0deg)",
     },
     animate: {
@@ -73,7 +73,7 @@ export default function Hero() {
         " polygon( 0% 0%, 0% 100%, 25% 100%, 25% 0, 74% 0, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0% )",
         "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
         "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
-        "clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%)",
+        "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
       ],
     },
   };

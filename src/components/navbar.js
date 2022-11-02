@@ -1,12 +1,10 @@
 //  src/compnents/navbar.js
 
-import React, { useRef, useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion, useAnimationControls } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import "../js/setBlurry";
-import "../js/navActive";
 const logo = require("../images/logo.png");
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -50,25 +48,87 @@ export default function Navbar(props) {
   const [isShrunk, setShrunk] = useState(false);
   const [click, setClick] = useState(false);
 
-  const ref = useRef();
-
   const controls = useAnimationControls();
   const itemControls = useAnimationControls();
   const sequence = async () => {
     await controls.start(!click ? "animate" : "initial");
     return await itemControls.start(!click ? "show" : "hidden");
   };
+
   const variants_list = {
     initial: {
-      opacity: 0,
-      clipPath: "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
+      filter: "sepia(0) hue-rotate(0deg)",
+      clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
     },
     animate: {
-      opacity: 1,
-      clipPath: "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
-      transition: {
-        when: click ? "beforeChildren" : "afterChildren",
-      },
+      filter: [
+        "sepia(1) hue-rotate(45deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(1) hue-rotate(45deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(1) hue-rotate(40deg)",
+        "sepia(0) hue-rotate(55deg)",
+        "sepia(1) hue-rotate(40deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(1) hue-rotate(85deg)",
+        "sepia(0) hue-rotate(55deg)",
+        "sepia(1) hue-rotate(65deg)",
+        "sepia(1) hue-rotate(40deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(1) hue-rotate(65deg)",
+        "sepia(1) hue-rotate(40deg)",
+        "sepia(1) hue-rotate(85deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(0) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(77deg)",
+        "sepia(0) hue-rotate(0deg)",
+      ],
+      clipPath: [
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0% 0%, 0 45%, 42% 45%, 43% 0, 69% 0, 69% 78%, 41% 78%, 41% 100%, 100% 100%, 100% 0)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0 79%, 0 45%, 41% 45%, 41% 61%, 71% 61%, 70% 0, 41% 0, 41% 100%, 100% 100%, 100% 79%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(100% 67%, 72% 67%, 71% 26%, 54% 26%, 53% 0, 0 0, 0 49%, 42% 49%, 42% 100%, 100% 100%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(49% 49%, 25% 49%, 25% 99%, 25% 25%, 49% 25%, 49% 76%, 0 76%, 0 100%, 100% 100%, 100% 49%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0 79%, 0 45%, 41% 45%, 41% 61%, 71% 61%, 70% 0, 41% 0, 41% 100%, 100% 100%, 100% 79%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(49% 49%, 25% 49%, 25% 99%, 25% 25%, 49% 25%, 49% 76%, 0 76%, 0 100%, 100% 100%, 100% 49%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0 79%, 0 45%, 41% 45%, 41% 61%, 71% 61%, 70% 0, 41% 0, 41% 100%, 100% 100%, 100% 79%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0%)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+        "polygon(0% 0%, 0 45%, 42% 45%, 43% 0, 69% 0, 69% 78%, 41% 78%, 41% 100%, 100% 100%, 100% 0)",
+        "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
+      ],
+    },
+    exit: {
+      clipPath: [
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 26% 0, 100% 0, 100% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 23% 100%, 23% 33%, 100% 33%, 100% 100%, 25% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 0 100%, 0 25%, 100% 25%, 100% 75%, 0 75%, 0 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 25% 100%, 25% 0, 74% 0, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
+      ],
     },
   };
   const listItem = {
@@ -83,23 +143,11 @@ export default function Navbar(props) {
 
   const handleClick = () => {
     setClick(!click);
-    window.setBlurry.is = !click;
-    window.nav.Active = !click;
-    console.log(window.nav.Active);
     sequence();
-    gsap.to(document.querySelector("main").style, {
-      opacity: click ? 1 : 0,
-      ease: "Expo.easeOut",
-    });
   };
 
   const closeMobileMenu = (e) => {
-    window.setBlurry.is = !click;
     sequence();
-    gsap.to(document.querySelector("main").style, {
-      opacity: click ? 1 : 0,
-      ease: "Expo.easeOut",
-    });
     const attribute = e.currentTarget.getAttribute("href");
     gsap.to(window, {
       duration: 0.55,
@@ -199,10 +247,16 @@ export default function Navbar(props) {
             ))}
           </ul>
           <motion.ul
-            ref={ref}
             variants={variants_list}
             initial="initial"
             animate={controls}
+            transition={{
+              type: "spring",
+              velocity: "10",
+              stiffness: 1000,
+              restSpeed: 0.5,
+              duration: 0.75,
+            }}
             className="nav-items-mobile"
           >
             {texts.map((_, index, item) => (

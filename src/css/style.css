@@ -3291,7 +3291,7 @@ div[data-scroll-content] .frame:first-child header {
   align-items: center;
 }
 
-:is(.nav-items-desktop, .nav-items-mobile) li .nav-link, .nav-items-mobile, :is(.nav-items-instant, .nav-items) .nav-item a, .navbar #image-wrapper-blue, .navbar {
+:is(.nav-items-desktop, .nav-items-mobile) li .nav-link, :is(.nav-items-instant, .nav-items) .nav-item a, .navbar #image-wrapper-blue, .navbar {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -3439,6 +3439,7 @@ a {
   flex-direction: column;
   list-style-type: none;
   z-index: -1;
+  background-color: var(--clr-contrast-800);
 }
 @media screen and (min-width: 880px) {
   .nav-items-mobile {

@@ -1,3 +1,0 @@
-window.nav = {
-  Active: false,
-};

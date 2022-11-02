@@ -154,13 +154,14 @@ a {
 }
 
 .nav-items-mobile {
-  @extend %flex-center, %trans, %absolute-full;
+  @extend %flex-center, %absolute-full;
   position: fixed;
   margin: 0;
   padding: 0;
   flex-direction: column;
   list-style-type: none;
   z-index: -1;
+  background-color: var(--clr-contrast-800);
 
   @include mq(medium) {
     display: none;
