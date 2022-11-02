@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from "./components/navbar";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import { Window } from "./js/webGL";
 import { DomGL } from "./js/DomGL";
@@ -22,7 +21,6 @@ export default function App() {
     <>
       <Router>
         <Window />
-        <Navbar />
         <DomGL>
           <AnimatedRoutes />
         </DomGL>

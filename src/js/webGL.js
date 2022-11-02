@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useState, createContext } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import * as THREE from "three";
 import fragment from "../components/gl/fragment";
 import vertex from "../components/gl/vertex";
 import { bgMesh } from "../js/Background";
 import { motion } from "framer-motion";
+import Navbar from "../components/navbar";
 import gsap from "gsap";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
@@ -11,6 +12,7 @@ import { GlitchPass } from "../js/glitchPass.js";
 import "../js/checkAnim";
 import "../js/scroll";
 import "../js/setBlurry";
+import "../js/navActive";
 
 let button = require("../images/button.png");
 
@@ -22,10 +24,9 @@ const Window = () => {
   const windowRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [changed, setChanged] = useState(false);
+  const { buttonActive } = React.createContext(true);
 
   const setupScene = () => {
-    // window.setBlurry.is = false;
-    // window.hoverItem.hovering = false;
     // renderer
     canvas = document.getElementById("c");
 
@@ -64,149 +65,161 @@ const Window = () => {
     const elements = document.querySelectorAll(".btn");
     const loader = new THREE.TextureLoader();
     const texture = loader.load(button, (texture) => {
+      elements.forEach(replace);
+      function replace(el) {
+        if (typeof el != "undefined" && el != null) {
+          // set up basic material and geometry
+
+          const imgGeometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+
+          const prog = {
+            ress: 0,
+          };
+
+          const imgMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+              iTime: { type: "f", value: prog },
+              iChannel0: {
+                type: "t",
+                value: texture,
+              },
+            },
+            fragmentShader: fragment,
+            vertexShader: vertex,
+          });
+
+          const geometry = imgGeometry;
+          const material = imgMaterial.clone();
+
+          const mesh = new THREE.Mesh(geometry, material);
+
+          // set the position of the gallery
+          const corner = new THREE.Vector3(0, 0, 0);
+          corner.unproject(camera);
+
+          function setBounds() {
+            const rect = el.getBoundingClientRect();
+
+            bounds = {
+              left: rect.left,
+              top: rect.top,
+              width: rect.width,
+              height: rect.height,
+            };
+
+            updateSize();
+            updatePosition();
+          }
+
+          window.addEventListener("resize", onWindowResize);
+          document.addEventListener("DOMContentLoaded", setBounds());
+
+          function onWindowResize() {
+            setBounds();
+          }
+
+          function calculateUnitSize(distance = mesh.position.z) {
+            const vFov = (camera.fov * Math.PI) / 180;
+            const height = 2 * Math.tan(vFov / 2) * distance;
+            const width = height * (canvas.offsetWidth / canvas.offsetHeight);
+
+            return { width, height };
+          }
+
+          function updateSize() {
+            camUnit = calculateUnitSize(camera.position.z - mesh.position.z);
+
+            const x = bounds.width / canvas.offsetWidth;
+            const y = bounds.height / canvas.offsetHeight;
+
+            if (!x || !y) return;
+
+            mesh.scale.x = camUnit.width * x;
+            mesh.scale.y = camUnit.height * y;
+          }
+
+          function updateY(y = 0) {
+            const { top } = bounds;
+
+            mesh.position.y = camUnit.height / 2 - mesh.scale.y / 2;
+
+            mesh.position.y -=
+              ((top - y) / canvas.offsetHeight) * camUnit.height;
+          }
+
+          function updateX(x = 0) {
+            const { left } = bounds;
+
+            mesh.position.x = -(camUnit.width / 2) + mesh.scale.x / 2;
+            mesh.position.x +=
+              ((left + x) / canvas.offsetWidth) * camUnit.width;
+          }
+
+          function updatePosition(y) {
+            updateY(y);
+            updateX(0);
+          }
+
+          function setY() {
+            const rect = el.getBoundingClientRect();
+
+            bounds = {
+              left: rect.left,
+              top: rect.top,
+              width: rect.width,
+              height: rect.height,
+            };
+
+            updateY();
+          }
+
+          setY();
+
+          // scene.add(cube);
+          meshes.push(mesh);
+          scene.add(mesh);
+
+          function animate(time) {
+            time *= 0.001;
+            mesh.material.uniforms.iTime.value = time * prog.ress;
+            if (window.nav.Active === true) {
+              meshes.forEach((el) => {
+                scene.remove(el);
+              });
+            } else {
+              meshes.forEach((el) => {
+                scene.add(el);
+              });
+            }
+
+            setY();
+            requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+
+          // Handle hovers...
+          el.addEventListener("mouseenter", () => {
+            gsap.to(prog, {
+              ress: 1,
+              ease: "power2.easeInOut",
+            });
+          });
+
+          el.addEventListener("mouseleave", () => {
+            gsap.to(prog, {
+              ress: 0,
+              ease: "power2.easeInOut",
+            });
+          });
+          // Exists.
+        } else {
+          return;
+        }
+      }
       texture.needsUpdate = true;
       texture.minFilter = THREE.LinearMipmapLinearFilter;
       texture.generateMipmaps = false;
     });
-    elements.forEach(replace);
-    function replace(el, index) {
-      if (typeof el != "undefined" && el != null) {
-        // set up basic material and geometry
-
-        const imgGeometry = new THREE.PlaneGeometry(1, 1, 32, 32);
-
-        const prog = {
-          ress: 0,
-        };
-
-        const imgMaterial = new THREE.ShaderMaterial({
-          uniforms: {
-            iTime: { type: "f", value: prog },
-            iChannel0: {
-              type: "t",
-              value: texture,
-            },
-          },
-          fragmentShader: fragment,
-          vertexShader: vertex,
-        });
-
-        const geometry = imgGeometry;
-        const material = imgMaterial.clone();
-
-        const mesh = new THREE.Mesh(geometry, material);
-
-        // set the position of the gallery
-        const corner = new THREE.Vector3(0, 0, 0);
-        corner.unproject(camera);
-
-        function setBounds() {
-          const rect = el.getBoundingClientRect();
-
-          bounds = {
-            left: rect.left,
-            top: rect.top,
-            width: rect.width,
-            height: rect.height,
-          };
-
-          updateSize();
-          updatePosition();
-        }
-
-        window.addEventListener("resize", onWindowResize);
-        document.addEventListener("DOMContentLoaded", setBounds());
-
-        function onWindowResize() {
-          setBounds();
-        }
-
-        function calculateUnitSize(distance = mesh.position.z) {
-          const vFov = (camera.fov * Math.PI) / 180;
-          const height = 2 * Math.tan(vFov / 2) * distance;
-          const width = height * (canvas.offsetWidth / canvas.offsetHeight);
-
-          return { width, height };
-        }
-
-        function updateSize() {
-          camUnit = calculateUnitSize(camera.position.z - mesh.position.z);
-
-          const x = bounds.width / canvas.offsetWidth;
-          const y = bounds.height / canvas.offsetHeight;
-
-          if (!x || !y) return;
-
-          mesh.scale.x = camUnit.width * x;
-          mesh.scale.y = camUnit.height * y;
-        }
-
-        function updateY(y = 0) {
-          const { top } = bounds;
-
-          mesh.position.y = camUnit.height / 2 - mesh.scale.y / 2;
-
-          mesh.position.y -= ((top - y) / canvas.offsetHeight) * camUnit.height;
-        }
-
-        function updateX(x = 0) {
-          const { left } = bounds;
-
-          mesh.position.x = -(camUnit.width / 2) + mesh.scale.x / 2;
-          mesh.position.x += ((left + x) / canvas.offsetWidth) * camUnit.width;
-        }
-
-        function updatePosition(y) {
-          updateY(y);
-          updateX(0);
-        }
-
-        function setY() {
-          const rect = el.getBoundingClientRect();
-
-          bounds = {
-            left: rect.left,
-            top: rect.top,
-            width: rect.width,
-            height: rect.height,
-          };
-
-          updateY();
-        }
-
-        setY();
-
-        // scene.add(cube);
-        meshes.push(mesh);
-        scene.add(mesh);
-
-        function animate(time) {
-          time *= 0.001;
-          mesh.material.uniforms.iTime.value = time * prog.ress;
-          setY();
-          requestAnimationFrame(animate);
-        }
-        requestAnimationFrame(animate);
-
-        // Handle hovers...
-        el.addEventListener("mouseenter", () => {
-          gsap.to(prog, {
-            ress: 1,
-            ease: "power2.easeInOut",
-          });
-        });
-
-        el.addEventListener("mouseleave", () => {
-          gsap.to(prog, {
-            ress: 0,
-            ease: "power2.easeInOut",
-          });
-        });
-        // Exists.
-      } else {
-        return;
-      }
-    }
 
     if (changed === true) {
       meshes.forEach((el) => {
@@ -304,8 +317,9 @@ const Window = () => {
       >
         <canvas id="c"></canvas>
       </motion.div>
+      <Navbar />
     </>
   );
 };
 
-export { Window };
+export { Window, meshes };

@@ -1,11 +1,12 @@
 //  src/compnents/navbar.js
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, createContext } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion, useAnimationControls } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import "../js/setBlurry";
+import "../js/navActive";
 const logo = require("../images/logo.png");
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -83,6 +84,8 @@ export default function Navbar(props) {
   const handleClick = () => {
     setClick(!click);
     window.setBlurry.is = !click;
+    window.nav.Active = !click;
+    console.log(window.nav.Active);
     sequence();
     gsap.to(document.querySelector("main").style, {
       opacity: click ? 1 : 0,

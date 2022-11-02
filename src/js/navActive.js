@@ -1,0 +1,3 @@
+window.nav = {
+  Active: false,
+};
