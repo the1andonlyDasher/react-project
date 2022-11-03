@@ -3,7 +3,7 @@
 import React, { useEffect, useState, createContext } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
-import { motion, useAnimationControls } from "framer-motion";
+import { motion, useAnimationControls, useCycle } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 const logo = require("../images/logo.png");
 
@@ -48,19 +48,34 @@ export default function Navbar(props) {
   const [isShrunk, setShrunk] = useState(false);
   const [click, setClick] = useState(false);
 
-  const controls = useAnimationControls();
-  const itemControls = useAnimationControls();
-  const sequence = async () => {
-    await controls.start(!click ? "animate" : "initial");
-    return await itemControls.start(!click ? "show" : "hidden");
-  };
-
-  const variants_list = {
-    initial: {
-      filter: "sepia(0) hue-rotate(0deg)",
-      clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+  const [animateItems, cycleItems] = useCycle({ opacity: 0 }, { opacity: 1 });
+  const [animate, cycle] = useCycle(
+    {
+      filter: [
+        "sepia(1) hue-rotate(40deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(1) hue-rotate(65deg)",
+        "sepia(1) hue-rotate(40deg)",
+        "sepia(1) hue-rotate(85deg)",
+        `greyscale(${Math.random()})`,
+        "sepia(0) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(77deg)",
+        "sepia(0) hue-rotate(0deg)",
+      ],
+      clipPath: [
+        "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+        "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
+        "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+        "polygon(0% 100%, 100% 100%, 100% 50%, 0% 50%, 0% 91%, 100% 91%, 100% 66%, 0% 66%, 1% 22%, 100% 22%, 100% 26%, 0% 26%, 0% 11%, 100% 11%, 100% 10%, 0% 10%)",
+        "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+        "polygon(0% 100%, 100% 100%, 100% 550%, 0% 55%, 0% 77%, 100% 77%, 100% 70%, 0% 70%, 1% 45%, 100% 45%, 100% 26%, 0% 26%, 0% 51%, 100% 51%, 100% 5%, 0% 5%)",
+        "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+        "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
+        "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+      ],
     },
-    animate: {
+    {
+      opacity: 1,
       filter: [
         "sepia(1) hue-rotate(45deg)",
         `greyscale(${Math.random()})`,
@@ -106,30 +121,12 @@ export default function Navbar(props) {
         "polygon(0% 0%, 0 45%, 42% 45%, 43% 0, 69% 0, 69% 78%, 41% 78%, 41% 100%, 100% 100%, 100% 0)",
         "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
       ],
-    },
-    exit: {
-      clipPath: [
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 25% 100%, 26% 0, 100% 0, 100% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        " polygon( 0% 0%, 0% 100%, 23% 100%, 23% 33%, 100% 33%, 100% 100%, 25% 100%, 25% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        " polygon( 0% 0%, 0% 100%, 0 100%, 0 25%, 100% 25%, 100% 75%, 0 75%, 0 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        " polygon( 0% 0%, 0% 100%, 25% 100%, 25% 0, 74% 0, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0% )",
-        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
-        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
-        "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
-      ],
-    },
+    }
+  );
+  const variants_list = {
+    start: { opacity: 0 },
+    entered: { opacity: 1 },
+    exit: { opacity: 0 },
   };
   const listItem = {
     hidden: { opacity: 0 },
@@ -139,6 +136,16 @@ export default function Navbar(props) {
     initial: { opacity: 0 },
     enter: { opacity: 1, delay: 2 },
     exit: { opacity: 0 },
+  };
+
+  const sequence = async () => {
+    if (click) {
+      await cycle();
+      return await cycleItems();
+    } else {
+      await cycleItems();
+      return await cycle();
+    }
   };
 
   const handleClick = () => {
@@ -176,8 +183,8 @@ export default function Navbar(props) {
         key={index}
         variants={listItem}
         initial="hidden"
-        animate={itemControls}
-        transition={{ type: "tween", duration: 0.25, delay: 0.2 + index * 0.2 }}
+        animate={animateItems}
+        transition={{ type: "tween", duration: 0.25, delay: 1 + index * 0.2 }}
         className="navItem"
       >
         <div
@@ -248,14 +255,15 @@ export default function Navbar(props) {
           </ul>
           <motion.ul
             variants={variants_list}
-            initial="initial"
-            animate={controls}
+            initial="start"
+            animate={animate}
             transition={{
               type: "spring",
               velocity: "10",
               stiffness: 1000,
               restSpeed: 0.5,
               duration: 0.75,
+              delay: click ? 0 : 1,
             }}
             className="nav-items-mobile"
           >
