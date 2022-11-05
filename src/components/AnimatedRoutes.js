@@ -19,7 +19,7 @@ function AnimatedRoutes() {
             //behavior: 'smooth'
           });
         }}
-        //initial={false}
+        // initial={false}
       >
         <Routes location={location} key={location.pathname}>
           <Route exact path="/wicked-hand" element={<HomePage />}></Route>
