@@ -263,7 +263,7 @@ export default function Navbar(props) {
               stiffness: 1000,
               restSpeed: 0.5,
               duration: 0.75,
-              delay: click ? 0 : 1,
+              delay: click ? 0 : 0.5,
             }}
             className="nav-items-mobile"
           >

@@ -3496,7 +3496,7 @@ a {
   height: 100%;
   color: var(--clr-contrast-100);
   text-decoration: none;
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(1.5rem, 15vw, 2rem);
   font-weight: 700;
   border-radius: 3px;
   font-family: "Fira Sans", sans-serif;
@@ -3522,6 +3522,7 @@ a {
 }
 @media screen and (min-width: 880px) {
   :is(.nav-items-desktop, .nav-items-mobile) li .nav-link {
+    font-size: clamp(1rem, 5vw, 1.5rem);
     padding: 1rem;
   }
 }
