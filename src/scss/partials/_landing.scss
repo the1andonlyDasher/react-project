@@ -141,11 +141,18 @@
 
 .container {
   @extend %flex-center;
+  position: relative;
   max-width: 75rem;
   margin: 0 auto;
   width: 100%;
   top: 0;
   height: 100%;
+}
+
+.tileHero{
+  @extend %absolute-full;
+  position: absolute;
+  opacity: 0;
 }
 
 .flex {

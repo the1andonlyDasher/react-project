@@ -1,10 +1,9 @@
-//  src/components/home.js
-import React from "react";
-import { Button } from "../button";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import TileHeros from "./TileHeros";
+import { mainTexts } from "./mainTexts";
+import { sideTexts } from "./sideTexts";
 
-export default function Hero() {
+const TileHero = ({ id, mainText, sideText }) => {
   const variants = {
     initial: {
       clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
@@ -80,33 +79,45 @@ export default function Hero() {
   };
   return (
     <>
-      <div className="container">
-        <TileHeros />
-        <motion.div
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{
-            type: "spring",
-            velocity: "10",
-            stiffness: 1000,
-            restSpeed: 0.5,
-            duration: 1,
-            delay: 1,
-          }}
-        >
-          <div id="mainHero">
-            <h3>Weil es nicht nur eine Website ist:</h3>
-            <h1 data-before="Wir hinterlassen bleibende Eindrücke">
-              Wir hinterlassen bleibende Eindrücke
-            </h1>
-          </div>
-          <Button gl={true} to="/">
-            Los geht's!
-          </Button>
-        </motion.div>
-      </div>
+      <motion.div
+        className="tileHero"
+        id={id}
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{
+          type: "spring",
+          velocity: "10",
+          stiffness: 1000,
+          restSpeed: 0.5,
+          duration: 1,
+          delay: 1,
+        }}
+      >
+        <h3>{sideText}</h3>
+        <h1 data-before={mainText}>{mainText}</h1>
+      </motion.div>
     </>
   );
-}
+};
+
+const TileHeros = () => {
+  const defaultItems = [...Array(8)];
+  const [items] = useState(defaultItems);
+  return (
+    <>
+      {items.map((_, index) => (
+        <TileHero
+          mainText={mainTexts[index]}
+          sideText={sideTexts[index]}
+          id={"tile" + index + "hero"}
+          key={index}
+          index={index}
+        />
+      ))}
+    </>
+  );
+};
+
+export default TileHeros;

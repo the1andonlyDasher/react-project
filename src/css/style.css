@@ -489,8 +489,8 @@ h5 {
 
 @media screen and (min-width: 880px) {
   h1,
-h2,
-h3 {
+  h2,
+  h3 {
     margin-left: 0;
     margin-right: auto;
   }
@@ -1897,10 +1897,10 @@ div[data-scroll-content] .frame:first-child header {
 
 @media all and (min-width: 660px) {
   .cookie-consent-container a.show-details,
-.cookie-consent-container a:visited.show-details,
-.cookie-consent-container a:active.show-details,
-.cookie-consent-container a:focus.show-details,
-.cookie-consent-container a:focus:active.show-details {
+  .cookie-consent-container a:visited.show-details,
+  .cookie-consent-container a:active.show-details,
+  .cookie-consent-container a:focus.show-details,
+  .cookie-consent-container a:focus:active.show-details {
     margin-bottom: 15px;
   }
 }
@@ -2966,6 +2966,15 @@ div[data-scroll-content] .frame:first-child header {
   align-items: center;
 }
 
+.tileHero {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .lr__wrapper {
   flex-direction: row;
   flex-wrap: wrap;
@@ -3061,11 +3070,17 @@ div[data-scroll-content] .frame:first-child header {
 }
 
 .container {
+  position: relative;
   max-width: 75rem;
   margin: 0 auto;
   width: 100%;
   top: 0;
   height: 100%;
+}
+
+.tileHero {
+  position: absolute;
+  opacity: 0;
 }
 
 .flex {
