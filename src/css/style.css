@@ -386,7 +386,7 @@ template {
 /* spacing */
 /* base classes */
 /* base classes */
-.btn__outline:before, .btn__outline:after {
+.buttons-wrapper, .btn__outline:before, .btn__outline:after {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -401,7 +401,9 @@ template {
   left: 0;
 }
 
-.btn__outline:before, .btn__outline:after, .btn__primary,
+#ad__Li,
+#ad__Ad, #ad__Li.appear,
+#ad__Ad.appear, .btn__outline:before, .btn__outline:after, .btn__primary,
 .btn__outline {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
@@ -1753,6 +1755,17 @@ div[data-scroll-content] .frame:first-child header {
 #ad__Ad.appear {
   opacity: 1 !important;
   top: 50% !important;
+}
+
+.legal-list {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  font-size: var(--fs-text);
+  font-family: "Catamaran", sans-serif;
+  width: 100%;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--clr-contrast-100);
 }
 
 .footer-links, .footer {

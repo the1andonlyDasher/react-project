@@ -1,5 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function DataPage() {
-  return <div></div>;
+  const variants = {
+    hidden: { opacity: 0 },
+    enter: { opacity: 1, delay: 1, duration: 1 },
+    exit: { opacity: 1 },
+  };
+  const item = {
+    hidden: { scaleY: 1 },
+    animate: { scaleY: 0 },
+    exit: { scaleY: 1 },
+  };
+  const defaultItems = [...Array(5)];
+  const [items] = useState(defaultItems);
+  const Item = ({ index }) => (
+    <motion.li
+      key={index}
+      variants={item}
+      initial="hidden"
+      animate="animate"
+      exit="exit"
+      transition={{ type: "tween", duration: 0.75, delay: 0.2 + index * 0.2 }}
+    ></motion.li>
+  );
+  return (
+    <>
+      <motion.ul className="transition">
+        {items.map((_, index) => (
+          <Item key={index} index={index} />
+        ))}
+      </motion.ul>
+      <motion.main
+        variants={variants}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        transition={{ type: "tween", duration: 1 }}
+        onAnimationStart={() => {
+          window.setBlurry.is = true;
+          setTimeout(() => {
+            window.setBlurry.is = false;
+          }, 2000);
+        }}
+      >
+        <section>
+          <h2>Datenschutz</h2>
+          <h3>Datenverwertung & Cookies</h3>
+          <p>
+            Für die Besucher von "Wicked Hand Design" verwenden wir keine
+            Cookies und erheben keine personenbezogenen Daten.
+          </p>
+          <ul className="legal-list">
+            <li>Es werden keine persönlichen Daten erhoben</li>
+            <li>Es werden keine persönlichen Daten gespeichert</li>
+            <li>Es weredn keine Informationen an Werbefimen weitergegeben</li>
+            <li>
+              Es werden keinbe Informationen über persönliche und
+              verhaltensbezogene Trends gesammelt und ausgewertet
+            </li>
+          </ul>
+        </section>
+      </motion.main>
+    </>
+  );
 }
