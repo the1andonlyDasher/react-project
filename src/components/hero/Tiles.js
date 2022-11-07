@@ -1,13 +1,13 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { images } from "./images";
 import { icons } from "./icons";
 import { mainTexts } from "./mainTexts";
 import { useEffect } from "react";
 import gsap from "gsap";
 import "../../js/checkAnim";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+const bg = require("../../images/bg.png");
 
 const Tile = ({ i, id, children, mainText }) => {
   const tileVariants = {
@@ -43,7 +43,7 @@ const Tile = ({ i, id, children, mainText }) => {
       exit="exit"
       maintext={mainText}
       id={id}
-      style={{ backgroundImage: `url(${i})` }}
+      style={{ backgroundImage: `url(${bg})` }}
       onMouseEnter={(e) => {
         tileControls.start("hover");
         console.log(id);
@@ -77,7 +77,9 @@ const Tile = ({ i, id, children, mainText }) => {
   );
 };
 
-const tiles = images.map((value, i) => {
+const defaultItems = [...Array(8)];
+
+const tiles = defaultItems.map((value, i) => {
   return (
     <Tile
       key={i}

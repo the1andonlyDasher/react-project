@@ -941,6 +941,8 @@ div[data-scroll-content] .frame:first-child header {
 
 .loader--hide {
   opacity: 0;
+  z-index: -9999;
+  animation-play-state: paused;
 }
 
 @keyframes load8 {
