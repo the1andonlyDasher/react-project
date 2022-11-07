@@ -1,23 +1,24 @@
 {
   "files": {
     "main.css": "/wicked-hand/static/css/main.74d7be9f.css",
-    "main.js": "/wicked-hand/static/js/main.9f0fc495.js",
+    "main.js": "/wicked-hand/static/js/main.6c796d6e.js",
     "static/media/bg2.png": "/wicked-hand/static/media/bg2.b95a909b704101fd0d8b.png",
     "static/media/logo.png": "/wicked-hand/static/media/logo.b8d31f032a880726b601.png",
     "static/media/page1.png": "/wicked-hand/static/media/page1.435707d1a6de6a66f821.png",
     "static/media/page3.png": "/wicked-hand/static/media/page3.1b64295cb3a8b1344614.png",
     "static/media/page2.png": "/wicked-hand/static/media/page2.d62a24fc1f545a960f16.png",
     "static/media/blue1.jpg": "/wicked-hand/static/media/blue1.0a8e144404fe1d4af5e3.jpg",
+    "static/media/bg.png": "/wicked-hand/static/media/bg.ddca51ef7aeb6d4acbe3.png",
     "index.html": "/wicked-hand/index.html",
     "static/media/Gruppe_7.svg": "/wicked-hand/static/media/Gruppe_7.8cf29e524c838648229b60e4aad5ae4e.svg",
     "static/media/Gruppe_6.svg": "/wicked-hand/static/media/Gruppe_6.2f7da05ab0f72d3b6eac1e955185b17b.svg",
     "static/media/Gruppe_3.svg": "/wicked-hand/static/media/Gruppe_3.2105343d20c06d4486e5c7436aecb370.svg",
     "static/media/Gruppe_1.svg": "/wicked-hand/static/media/Gruppe_1.fe9a269a2f679fd30286f733fd9b2dec.svg",
     "main.74d7be9f.css.map": "/wicked-hand/static/css/main.74d7be9f.css.map",
-    "main.9f0fc495.js.map": "/wicked-hand/static/js/main.9f0fc495.js.map"
+    "main.6c796d6e.js.map": "/wicked-hand/static/js/main.6c796d6e.js.map"
   },
   "entrypoints": [
     "static/css/main.74d7be9f.css",
-    "static/js/main.9f0fc495.js"
+    "static/js/main.6c796d6e.js"
   ]
 }
