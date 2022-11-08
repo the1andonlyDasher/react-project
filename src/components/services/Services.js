@@ -1,10 +1,10 @@
 //  src/components/home.js
 import React from "react";
 import { BaseItem } from "./baseItem/BaseItem";
-import g7 from "../../images/Gruppe_7.svg"
-import g1 from "../../images/Gruppe_1.svg"
-import g3 from "../../images/Gruppe_3.svg"
-import g6 from "../../images/Gruppe_6.svg"
+import g7 from "../../images/Gruppe_7.svg";
+import g1 from "../../images/Gruppe_1.svg";
+import g3 from "../../images/Gruppe_3.svg";
+import g6 from "../../images/Gruppe_6.svg";
 
 export const Services = ({ title, subtitle, sectionName, id }) => {
   return (

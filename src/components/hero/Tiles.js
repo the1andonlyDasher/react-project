@@ -9,7 +9,7 @@ import "../../js/checkAnim";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const bg = require("../../images/bg.png");
 
-const Tile = ({ i, id, children, mainText }) => {
+const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
   const tileVariants = {
     start: { scale: 0, opacity: 0 },
     entered: {
@@ -42,8 +42,12 @@ const Tile = ({ i, id, children, mainText }) => {
       animate={tileControls}
       exit="exit"
       maintext={mainText}
+      fallbacksrc={fallbacksrc}
       id={id}
       style={{ backgroundImage: `url(${bg})` }}
+      onError={(e) =>
+        e.currentTarget.style.backgroundImage(`url(${fallbacksrc})`)
+      }
       onMouseEnter={(e) => {
         tileControls.start("hover");
         gsap.to(document.querySelector("#" + id + "hero"), {

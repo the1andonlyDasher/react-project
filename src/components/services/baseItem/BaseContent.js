@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 export const BaseContent = ({ title, subtitle, icon }) => {
-  const [triggered, setTrigger] = useState(false);
   const item = useRef();
 
   function handleClick() {

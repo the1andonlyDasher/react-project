@@ -8,9 +8,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "../../js/hoverImg.js";
-const image1 = require("../../images/page1.png");
-const image2 = require("../../images/page2.png");
-const image3 = require("../../images/page3.png");
+const image1 = require("../../images/page1.webp");
+const image2 = require("../../images/page2.webp");
+const image3 = require("../../images/page3.webp");
 const image4 = require("../../images/blue1.jpg");
 let canvas;
 
@@ -49,7 +49,7 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
           spaceBetween={50}
           breakpoints={{
             1700: {
-              slidesPerView: 4,
+              slidesPerView: 3,
             },
             1200: {
               slidesPerView: 3,
@@ -167,40 +167,6 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
             <div
               className="bg"
               style={{ backgroundImage: `url(${image3})` }}
-            ></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              ref={pushRef}
-              onMouseEnter={() => {
-                isShown(true);
-                isDull(true);
-                changeOpacity();
-                window.hoverItem.hoverImg = 4;
-              }}
-              onMouseLeave={() => {
-                isShown(false);
-                isDull(false);
-                changeOpacity();
-                window.hoverItem.hoverImg = 0;
-              }}
-              className="inner"
-            >
-              <Button
-                gl={false}
-                to="\\www.google.de"
-                target="_blank"
-                type="button"
-                buttonSize={"btn__medium"}
-                buttonStyle={"btn__outline"}
-                dl="Anschauen"
-              >
-                Anschauen
-              </Button>
-            </div>
-            <div
-              className="bg"
-              style={{ backgroundImage: `url(${image4})` }}
             ></div>
           </SwiperSlide>
         </Swiper>

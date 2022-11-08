@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { motion, useAnimation, useCycle } from "framer-motion";
+import React from "react";
+import { motion, useCycle } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const BaseCover = ({ title, subtitle, backgroundImage }) => {
   const [animate, cycle] = useCycle(
