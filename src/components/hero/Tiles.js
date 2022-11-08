@@ -46,7 +46,6 @@ const Tile = ({ i, id, children, mainText }) => {
       style={{ backgroundImage: `url(${bg})` }}
       onMouseEnter={(e) => {
         tileControls.start("hover");
-        console.log(id);
         gsap.to(document.querySelector("#" + id + "hero"), {
           opacity: 1,
           duration: 0.3,

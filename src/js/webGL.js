@@ -3,7 +3,7 @@ import * as THREE from "three";
 import fragment from "../components/gl/fragment";
 import vertex from "../components/gl/vertex";
 import { bgMesh } from "../js/Background";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import Navbar from "../components/navbar";
 import gsap from "gsap";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
@@ -23,6 +23,82 @@ const Window = () => {
   const windowRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [changed, setChanged] = useState(false);
+
+  const variants = {
+    initial: {
+      clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
+      filter: "sepia(1) hue-rotate(0deg)",
+    },
+    animate: {
+      filter: [
+        "sepia(1) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(90deg)",
+        "sepia(1) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(65deg)",
+        "sepia(1) hue-rotate(40deg)",
+        "sepia(1) hue-rotate(55deg)",
+        "sepia(1) hue-rotate(85deg)",
+        "sepia(1) hue-rotate(55deg)",
+        "sepia(1) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(77deg)",
+        "sepia(1) hue-rotate(42deg)",
+        "sepia(1) hue-rotate(65deg)",
+        "sepia(1) hue-rotate(95deg)",
+        "sepia(1) hue-rotate(45deg)",
+        "sepia(1) hue-rotate(57deg)",
+        "sepia(1) hue-rotate(63deg)",
+        "sepia(1) hue-rotate(55deg)",
+        "sepia(1) hue-rotate(75deg)",
+        "sepia(0) hue-rotate(0deg)",
+      ],
+      clipPath: [
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 26% 0, 100% 0, 100% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 23% 100%, 23% 33%, 100% 33%, 100% 100%, 25% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 0 100%, 0 25%, 100% 25%, 100% 75%, 0 75%, 0 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 25% 100%, 25% 0, 74% 0, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 400%, 400% 300%, 400% 0, -100% -100%)",
+      ],
+    },
+    exit: {
+      clipPath: [
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 26% 0, 100% 0, 100% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 23% 100%, 23% 33%, 100% 33%, 100% 100%, 25% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 0 100%, 0 25%, 100% 25%, 100% 75%, 0 75%, 0 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        " polygon( 0% 0%, 0% 100%, 25% 100%, 25% 0, 74% 0, 75% 100%, 26% 100%, 25% 100%, 100% 100%, 100% 0% )",
+        "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
+        "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
+        "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
+      ],
+    },
+  };
+
+  const controls = useAnimationControls();
 
   useEffect(() => {
     var observer = new MutationObserver(function (mutations) {
@@ -75,10 +151,33 @@ const Window = () => {
     composer.addPass(glitchPass);
 
     // ********************************************************
-    // ------------------- make planes start ---------------------
+    // ------------------- loader start ---------------------
+    // ********************************************************
+
+    const loadingManager = new THREE.LoadingManager();
+
+    loadingManager.onStart = function (item, loaded, total) {
+      //console.log("Loading started");
+      controls.start("animate");
+    };
+
+    loadingManager.onLoad = function () {
+      //console.log("done!");
+    };
+    loadingManager.onProgress = function (item, loaded, total) {
+      // console.log(item, loaded, total);
+      // console.log('Loaded:', Math.round(loaded / total * 100, 2) + '%')
+    };
+
+    loadingManager.onError = function (url) {
+      console.log("Error loading");
+    };
+
+    // ********************************************************
+    // ------------------- make buttons start ---------------------
     // ********************************************************
     const elements = document.querySelectorAll(".btn");
-    const loader = new THREE.TextureLoader();
+    const loader = new THREE.TextureLoader(loadingManager);
     const texture = loader.load(button, (texture) => {
       elements.forEach(replace);
       function replace(el) {
@@ -273,18 +372,14 @@ const Window = () => {
     animate();
   };
 
-  const transition = {
-    duration: 1,
-    //delay: 1,
-    ease: [0.43, 0.13, 0.23, 0.96],
-  };
-
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, transition }}
-        animate={{ opacity: 1, transition }}
-        exit={{ opacity: 0, transition }}
+        variants={variants}
+        initial={"initial"}
+        animate={controls}
+        exit={"exit"}
+        className="canvas__wrapper"
         onAnimationStart={() => {}}
         onAnimationComplete={() => {
           setVisible(true);
