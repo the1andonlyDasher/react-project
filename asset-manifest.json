@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wicked-hand/static/css/main.74d7be9f.css",
-    "main.js": "/wicked-hand/static/js/main.6c796d6e.js",
+    "main.css": "/wicked-hand/static/css/main.d786380a.css",
+    "main.js": "/wicked-hand/static/js/main.f726ccfe.js",
     "static/media/bg2.png": "/wicked-hand/static/media/bg2.b95a909b704101fd0d8b.png",
     "static/media/logo.png": "/wicked-hand/static/media/logo.b8d31f032a880726b601.png",
     "static/media/page1.png": "/wicked-hand/static/media/page1.435707d1a6de6a66f821.png",
@@ -14,11 +14,11 @@
     "static/media/Gruppe_6.svg": "/wicked-hand/static/media/Gruppe_6.2f7da05ab0f72d3b6eac1e955185b17b.svg",
     "static/media/Gruppe_3.svg": "/wicked-hand/static/media/Gruppe_3.2105343d20c06d4486e5c7436aecb370.svg",
     "static/media/Gruppe_1.svg": "/wicked-hand/static/media/Gruppe_1.fe9a269a2f679fd30286f733fd9b2dec.svg",
-    "main.74d7be9f.css.map": "/wicked-hand/static/css/main.74d7be9f.css.map",
-    "main.6c796d6e.js.map": "/wicked-hand/static/js/main.6c796d6e.js.map"
+    "main.d786380a.css.map": "/wicked-hand/static/css/main.d786380a.css.map",
+    "main.f726ccfe.js.map": "/wicked-hand/static/js/main.f726ccfe.js.map"
   },
   "entrypoints": [
-    "static/css/main.74d7be9f.css",
-    "static/js/main.6c796d6e.js"
+    "static/css/main.d786380a.css",
+    "static/js/main.f726ccfe.js"
   ]
 }
