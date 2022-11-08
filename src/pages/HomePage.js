@@ -5,6 +5,7 @@ import { Portfolio2 } from "../components/portfolio/Portfolio2";
 import { Footer } from "../components/footer/Footer";
 import { motion } from "framer-motion";
 import ContactForm from "../components/contact/ContactForm";
+import Scrollbar from "../components/scrollbar";
 import "../js/checkAnim";
 import "../js/setBlurry";
 
@@ -56,6 +57,7 @@ export default function Home_page() {
         onAnimationEnd={() => {}}
         //transition={{ type: "tween", duration: 1 }}
       >
+        <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <HeroWrapper sectionName="Home" id="landing" />
         <Services
           title="Leistungen"

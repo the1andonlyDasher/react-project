@@ -41,6 +41,21 @@
   align-items: center;
 }
 
+.legal h3 {
+	margin: 3rem 0rem 0rem 0;
+}
+
+.progress-bar{
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	right: 1rem;
+	width: 5px;
+	background: var(--clr-primary-200);
+	transform-origin: top;
+	z-index: 100;
+}
+
 
 .document__wrapper {
   position: fixed;

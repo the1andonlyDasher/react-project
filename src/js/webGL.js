@@ -28,6 +28,7 @@ const Window = () => {
     initial: {
       clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
       filter: "sepia(1) hue-rotate(0deg)",
+      opacity: 0,
     },
     animate: {
       filter: [
@@ -72,6 +73,7 @@ const Window = () => {
         "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
         "polygon(-100% 400%, 400% 300%, 400% 0, -100% -100%)",
       ],
+      opacity: 1,
     },
     exit: {
       clipPath: [
@@ -95,6 +97,7 @@ const Window = () => {
         "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
         "polygon(0 100%, 0 100%, 0 100%, 0 100%)",
       ],
+      opacity: 0,
     },
   };
 
