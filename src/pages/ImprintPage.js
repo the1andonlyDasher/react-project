@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import Scrollbar from "../components/scrollbar";
 
 export default function ImprintPage() {
   const variants = {
@@ -45,6 +46,7 @@ export default function ImprintPage() {
           }, 2000);
         }}
       >
+        <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <section className="legal">
           <h2>Impressum</h2>
           <h3>Dienstanbieter</h3>

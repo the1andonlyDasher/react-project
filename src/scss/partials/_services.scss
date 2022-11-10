@@ -56,15 +56,19 @@
   grid-row-gap: var(--row-gap);
   justify-content: center;
   @include mq(medium) {
-    --mwidth: 300px;
+    --mwidth: 290px;
   }
   @include mq(large) {
-    --mwidth: 350px;
+    --mwidth: 345px;
   }
   @include mq(xl) {
     --columns: 4;
     --mwidth: 300px;
-    grid-template-rows: repeat(2, minmax(15%, 1fr));
+
+    grid-template-columns: repeat(
+    auto-fit,
+    minmax(auto, 1fr)
+  );
   }
 }
 

@@ -4,7 +4,7 @@ import { BaseCover } from "./BaseCover";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-export const BaseItem = ({ title, subtitle, backgroundImage, icon }) => {
+export const BaseItem = ({ title, subtitle, backgroundImage, icon, text }) => {
   const variants = {
     start: {
       opacity: 0,
@@ -62,6 +62,7 @@ export const BaseItem = ({ title, subtitle, backgroundImage, icon }) => {
       clipPath: "polygon(-100% 100%, 100% 100%, 100% 0, -100% -100%)",
     },
   };
+
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true });
   useEffect(() => {
@@ -86,7 +87,7 @@ export const BaseItem = ({ title, subtitle, backgroundImage, icon }) => {
       }}
       className="base__item"
     >
-      <BaseContent title={title} subtitle={subtitle} icon={icon} />
+      <BaseContent title={title} subtitle={subtitle} icon={icon} text={text} />
       <BaseCover
         title={title}
         subtitle={subtitle}

@@ -1,6 +1,8 @@
 //  src/components/home.js
 import React from "react";
 import { BaseItem } from "./baseItem/BaseItem";
+import { web } from "../../texts/web.js";
+import { brand } from "../../texts/brand";
 import g7 from "../../images/Gruppe_7.svg";
 import g1 from "../../images/Gruppe_1.svg";
 import g3 from "../../images/Gruppe_3.svg";
@@ -16,12 +18,14 @@ export const Services = ({ title, subtitle, sectionName, id }) => {
           <BaseItem
             title="Webdesign"
             subtitle="Ihre digitale Visitenkarte"
+            text={web}
             backgroundImage={g3}
             icon={g3}
           />
           <BaseItem
             title="Branding"
             subtitle="Das Gesicht ihres Unternehmens"
+            text={brand}
             backgroundImage={g6}
             icon={g6}
           />

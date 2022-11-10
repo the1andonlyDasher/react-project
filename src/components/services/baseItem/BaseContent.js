@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-export const BaseContent = ({ title, subtitle, icon }) => {
+export const BaseContent = ({ title, subtitle, icon, text }) => {
   const item = useRef();
 
   function handleClick() {
@@ -35,6 +35,7 @@ export const BaseContent = ({ title, subtitle, icon }) => {
       fadeOut();
     }
   }
+
   return (
     <>
       <div className="base__content" ref={item}>
@@ -42,13 +43,14 @@ export const BaseContent = ({ title, subtitle, icon }) => {
           <h4>{title}</h4>
           <h5>{subtitle}</h5>
           <div className="panel">
-            <p>
+            <p>{text}</p>
+            {/* <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua. At vero eos et accusam et justo duo
               dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
               sanctus est Lorem ipsum dolor sit amet.&nbsp;
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="base__icon">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Scrollbar from "../components/scrollbar.js";
 
 export default function DataPage() {
   const variants = {
@@ -44,6 +45,7 @@ export default function DataPage() {
           }, 2000);
         }}
       >
+        <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <section>
           <h2>Datenschutz</h2>
           <h3>Datenverwertung & Cookies</h3>
