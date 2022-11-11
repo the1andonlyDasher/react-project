@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Courier+Prime:wght@400;700&family=Fira+Sans:wght@500;600;700;800&display=swap");
 /* Normalize CSS*/
 /* Normalize.css - The best CSS Reset Library in 2021
 Last updated Apr 27, 2021
@@ -385,6 +384,26 @@ template {
 /* colors */
 /* spacing */
 /* base classes */
+@font-face {
+  font-family: "Catamaran";
+  font-weight: 300;
+  src: local("Catamaran"), url(../fonts/Catamaran-Regular.woff2) format("woff2"), local("Catamaran"), url(../fonts/Catamaran-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Catamaran";
+  font-weight: 900;
+  src: local("Catamaran"), url(../fonts/Catamaran-Black.woff2) format("woff2"), local("Catamaran"), url(../fonts/Catamaran-Black.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Courier Prime";
+  font-weight: 400;
+  src: local("Courier Prime"), url(../fonts/CourierPrime-Regular.woff2) format("woff2"), local("Courier Prime"), url(../fonts/CourierPrime-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Fira Sans";
+  font-weight: 800;
+  src: local("Fira Sans"), url(../fonts/FiraSans-ExtraBold.woff2) format("woff2"), local("Fira Sans"), url(../fonts/FiraSans-ExtraBold.ttf) format("truetype");
+}
 /* base classes */
 .buttons-wrapper, .btn__outline:before, .btn__outline:after {
   display: flex;
@@ -445,8 +464,6 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   scrollbar-width: none !important;
   color: var(--clr-contrast-100);
 }
@@ -506,7 +523,7 @@ h1 {
   font-size: var(--fs-header);
   position: relative;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--clr-contrast-100);
   margin-bottom: var(--space-s);
   line-height: 1.3;
@@ -526,7 +543,7 @@ h2 {
   font-size: var(--fs-sub-big);
   position: relative;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 800;
+  font-weight: inherit;
   color: var(--clr-contrast-100);
   line-height: 1.3;
   border-bottom: 2px solid var(--clr-primary-200);
@@ -545,7 +562,7 @@ h2:before {
 h3 {
   font-size: var(--fs-sub-small);
   font-family: "Courier Prime", monospace;
-  font-weight: 500;
+  font-weight: inherit;
   color: var(--clr-contrast-300);
   line-height: 1.2;
 }
@@ -561,7 +578,7 @@ h5 {
   margin: 0;
   color: var(--clr-contrast-200);
   font-size: var(--fs-text);
-  font-weight: 400;
+  font-weight: inherit;
   font-family: "Courier Prime", monospace;
 }
 
@@ -570,7 +587,7 @@ p {
   font-family: "Catamaran", sans-serif;
   width: 100%;
   line-height: 1.5;
-  font-weight: 300;
+  font-weight: inherit;
   color: var(--clr-contrast-100);
 }
 
@@ -587,7 +604,7 @@ a {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
   font-size: var(--fs-sub-small);
-  font-weight: 800;
+  font-weight: inherit;
   padding: var(--space-s) var(--space-l);
   overflow: visible;
   max-width: 300px;
@@ -3447,7 +3464,7 @@ a {
   list-style-type: none;
   color: var(--clr-contrast-100);
   font-size: clamp(2rem, 7vw, 50px);
-  font-weight: 500;
+  font-weight: inherit;
 }
 
 :is(.nav-items-instant, .nav-items) .nav-item {
@@ -3467,7 +3484,7 @@ a {
   text-decoration: none;
   width: 100%;
   height: 100%;
-  font-weight: 400;
+  font-weight: inherit;
   font-size: var(--fs-sub-big);
   text-align: center;
 }
@@ -3546,7 +3563,7 @@ a {
   color: var(--clr-contrast-100);
   text-decoration: none;
   font-size: clamp(1.5rem, 15vw, 2rem);
-  font-weight: 700;
+  font-weight: inherit;
   border-radius: 3px;
   font-family: "Fira Sans", sans-serif;
   animation: empty 1s infinite;
@@ -3664,7 +3681,7 @@ a {
   transition: ease-in-out 0.5s;
   content: attr(data-link-text);
   animation: empty 1s infinite;
-  font-weight: 900;
+  font-weight: inherit;
   font-size: var(--fs-sub-small);
   display: flex;
   opacity: 0;
@@ -3732,12 +3749,12 @@ a {
 
 .instant-nav ul li i {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: inherit;
 }
 
 .instant-nav ul li span {
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: inherit;
   margin-top: 0.75rem;
   font-size: 10px;
 }
