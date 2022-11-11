@@ -3,12 +3,10 @@ import "../js/scroll";
 import "../js/hoverImg";
 
 let images = [
-  require("../images/bg2.png"),
-  require("../images/page1.png"),
-  require("../images/page2.png"),
-  require("../images/page3.png"),
-  require("../images/blue1.jpg"),
-  require("../images/logo.png"),
+  require("../images/bg2.webp"),
+  require("../images/page1.webp"),
+  require("../images/page2.webp"),
+  require("../images/page3.webp"),
 ];
 const textures = [];
 

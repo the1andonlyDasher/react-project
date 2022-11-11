@@ -1,11 +1,11 @@
 //  src/compnents/navbar.js
 
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
-import { motion, useAnimationControls, useCycle } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-const logo = require("../images/logo.png");
+const logo = require("../images/logo.webp");
 
 gsap.registerPlugin(ScrollToPlugin);
 
