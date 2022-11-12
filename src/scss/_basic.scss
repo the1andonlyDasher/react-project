@@ -239,29 +239,6 @@ a {
     box-shadow: inset 0 0 0 2px transparent;
     color: transparent;
   }
-   &:after{
-    content:attr(data-link-text);
-    color: var(--clr-contrast-100);
-    @extend %absolute-full, %trans, %flex-center;
-    position: absolute;
-    box-shadow: inset 0px 0px 0px 2px var(--clr-contrast-100);
-    filter: sepia(0) hue-rotate(0deg);
-    animation: empty 0s;
-    animation-iteration-count: 1;
-    animation-play-state: paused;
-    z-index:-1;
-  }
-  &:before{
-    content:attr(data-link-text);
-    color: var(--clr-contrast-100);
-    @extend %absolute-full, %trans, %flex-center;
-    position: absolute;
-    box-shadow: inset 0px 0px 0px 2px var(--clr-contrast-100);
-    animation: empty 0s;
-    animation-iteration-count: 1;
-    animation-play-state: paused;
-    z-index:-1;
-  }
   &:hover:before{
     animation-play-state: running;
     animation: offsetGlitch 2s;
@@ -272,6 +249,30 @@ a {
     animation: offsetGlitchCounter 2s;
     animation-iteration-count: infinite;
   }
+   &:after{
+    content:attr(data-link-text);
+    color: var(--clr-contrast-100);
+    @extend %absolute-full, %trans, %flex-center;
+    position: absolute;
+    box-shadow: inset 0px 0px 0px 2px var(--clr-contrast-100);
+    filter: sepia(0) hue-rotate(0deg);
+    animation: empty 0s;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
+
+  }
+  &:before{
+    content:attr(data-link-text);
+    color: var(--clr-contrast-100);
+    @extend %absolute-full, %trans, %flex-center;
+    position: absolute;
+    box-shadow: inset 0px 0px 0px 2px var(--clr-contrast-100);
+    animation: empty 0s;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
+  
+  }
+
 }
 
 @keyframes empty {
