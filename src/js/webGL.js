@@ -350,6 +350,10 @@ const Window = () => {
 
       glitchPass.curF = 20;
 
+      document.getElementById(
+        "data-scroll-content"
+      ).style.transform = `translate3d(0, -${window.scrollProgress.current}px, 0)`;
+
       // bgMesh.material.uniforms.iTime.value = time;
       // bgMesh.material.uniforms.iProg.value = Math.abs(window.delta.speed);
 

@@ -19,13 +19,6 @@ export const DomGL = React.forwardRef((props, ref) => {
     var config = { attributes: false, childList: true, characterData: false };
 
     observer.observe(document.getElementById("data-scroll-content"), config);
-
-    function render(time) {
-      time = 0.01;
-      dom.current.style.transform = `translate3d(0, -${window.scrollProgress.current}px, 0)`;
-      requestAnimationFrame(render);
-    }
-    requestAnimationFrame(render);
   });
 
   return (
