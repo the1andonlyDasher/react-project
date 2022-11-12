@@ -350,8 +350,8 @@ const Window = () => {
 
       glitchPass.curF = 20;
 
-      bgMesh.material.uniforms.iTime.value = time;
-      bgMesh.material.uniforms.iProg.value = Math.abs(window.delta.speed);
+      // bgMesh.material.uniforms.iTime.value = time;
+      // bgMesh.material.uniforms.iProg.value = Math.abs(window.delta.speed);
 
       //bgMesh.material.uniforms.iTime.value =
       //time * Math.abs(window.delta.speed);

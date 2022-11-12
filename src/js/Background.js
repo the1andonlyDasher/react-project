@@ -156,7 +156,7 @@ var counter = 5;
 while (i < counter) {
   const loader = new THREE.TextureLoader();
   const texture = loader.load(images[i], (texture) => {
-    texture.needsUpdate = true;
+    texture.needsUpdate = false;
     texture.minFilter = THREE.LinearMipmapLinearFilter;
     texture.generateMipmaps = false;
   });
@@ -193,7 +193,7 @@ const imgMaterial = new THREE.ShaderMaterial({
 
 const g = bgGeometry;
 const m = bgMaterial;
-m.needsUpdate = true;
+m.needsUpdate = false;
 
 const bgMesh = new THREE.Mesh(g, m);
 
@@ -206,6 +206,7 @@ function animate(time) {
     textures[`${window.hoverItem.hoverImg}`];
   bgMesh.material.uniforms.iChannel0.value.wrapS = THREE.RepeatWrapping;
   bgMesh.material.uniforms.iChannel0.value.wrapT = THREE.RepeatWrapping;
+
   requestAnimationFrame(animate);
 }
 requestAnimationFrame(animate);
