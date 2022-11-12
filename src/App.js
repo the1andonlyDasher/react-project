@@ -20,8 +20,6 @@ export default function App() {
   return (
     <>
       <Router>
-        <Window />
-
         <AnimatedRoutes />
       </Router>
       <Loader hideLoader={hideLoader} showLoader={showLoader}></Loader>
