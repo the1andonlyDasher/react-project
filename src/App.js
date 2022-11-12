@@ -21,9 +21,8 @@ export default function App() {
     <>
       <Router>
         <Window />
-        <DomGL>
-          <AnimatedRoutes />
-        </DomGL>
+
+        <AnimatedRoutes />
       </Router>
       <Loader hideLoader={hideLoader} showLoader={showLoader}></Loader>
     </>

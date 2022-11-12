@@ -87,11 +87,9 @@ body {
 }
 
 #root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 canvas {
@@ -105,7 +103,11 @@ canvas {
 
 .canvas__wrapper{
   height:100%;
+  position: fixed;
+  width: 100%;
 }
+
+
 
 h1,
 h2,
@@ -504,7 +506,7 @@ a {
 }
 
 .main {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   height: 100%;
@@ -536,6 +538,10 @@ a {
 
 .main section:last-of-type {
   padding-bottom: 100px;
+}
+
+#data-scroll-content{
+  will-change: transform;
 }
 
 div[data-scroll-content] .frame:first-child {

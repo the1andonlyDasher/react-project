@@ -38,6 +38,7 @@ export default function ImprintPage() {
         initial="hidden"
         animate="enter"
         exit="exit"
+        className="main"
         transition={{ type: "tween", duration: 1 }}
         onAnimationStart={() => {
           window.setBlurry.is = true;

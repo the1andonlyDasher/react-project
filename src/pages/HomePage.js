@@ -47,6 +47,7 @@ export default function Home_page() {
         initial="hidden"
         animate="enter"
         exit="exit"
+        className="main"
         onAnimationStart={() => {
           window.setBlurry.is = true;
           setTimeout(() => {

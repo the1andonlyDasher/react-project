@@ -18,7 +18,7 @@ export const DomGL = React.forwardRef((props, ref) => {
 
     var config = { attributes: false, childList: true, characterData: false };
 
-    observer.observe(document.getElementById("data-scroll-content"), config);
+    // observer.observe(document.getElementById("data-scroll-content"), config);
   });
 
   return (

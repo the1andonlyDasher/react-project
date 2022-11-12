@@ -33,6 +33,7 @@ export default function DataPage() {
         ))}
       </motion.ul>
       <motion.main
+        className="main"
         variants={variants}
         initial="hidden"
         animate="enter"
