@@ -13,7 +13,7 @@ function doSomething() {
   newc = currentScroll;
   const tween = gsap.to(window.scrollProgress, {
     current: newc,
-    duration: 1.5,
+    duration: 1,
     ease: "power2.out",
   });
   tween.play();
