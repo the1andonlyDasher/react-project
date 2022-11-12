@@ -13,7 +13,7 @@ import "../js/checkAnim";
 import "../js/scroll";
 import "../js/setBlurry";
 
-let button = require("../images/button.png");
+let button = require("../images/button.webp");
 
 let canvas, renderer, composer, glitchPass;
 let camera, scene, bounds, camUnit;
@@ -323,7 +323,7 @@ const Window = () => {
           return;
         }
       }
-      texture.needsUpdate = true;
+      texture.needsUpdate = false;
       texture.minFilter = THREE.LinearMipmapLinearFilter;
       texture.generateMipmaps = false;
     });
