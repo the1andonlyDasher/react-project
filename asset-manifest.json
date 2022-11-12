@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wicked-hand/static/css/main.5b847648.css",
-    "main.js": "/wicked-hand/static/js/main.5dfd2356.js",
+    "main.css": "/wicked-hand/static/css/main.eea7367f.css",
+    "main.js": "/wicked-hand/static/js/main.66137156.js",
     "static/media/FiraSans-ExtraBold.ttf": "/wicked-hand/static/media/FiraSans-ExtraBold.4cefd111bf6571164e73.ttf",
     "static/media/FiraSans-ExtraBold.woff2": "/wicked-hand/static/media/FiraSans-ExtraBold.00cfaa4c1d03da2f789b.woff2",
     "static/media/blue1.jpg": "/wicked-hand/static/media/blue1.0a8e144404fe1d4af5e3.jpg",
@@ -23,11 +23,11 @@
     "static/media/button.webp": "/wicked-hand/static/media/button.97e0b0a34c999bdc3945.webp",
     "static/media/Gruppe_3.svg": "/wicked-hand/static/media/Gruppe_3.2c76c070457d18bdf795fc5f5a57f454.svg",
     "static/media/Gruppe_1.svg": "/wicked-hand/static/media/Gruppe_1.0c947f612c9c42bd36b63ffb4acb052d.svg",
-    "main.5b847648.css.map": "/wicked-hand/static/css/main.5b847648.css.map",
-    "main.5dfd2356.js.map": "/wicked-hand/static/js/main.5dfd2356.js.map"
+    "main.eea7367f.css.map": "/wicked-hand/static/css/main.eea7367f.css.map",
+    "main.66137156.js.map": "/wicked-hand/static/js/main.66137156.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b847648.css",
-    "static/js/main.5dfd2356.js"
+    "static/css/main.eea7367f.css",
+    "static/js/main.66137156.js"
   ]
 }
