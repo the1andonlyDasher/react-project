@@ -11,7 +11,6 @@ import "../../js/hoverImg.js";
 const image1 = require("../../images/page1.webp");
 const image2 = require("../../images/page2.webp");
 const image3 = require("../../images/page3.webp");
-const image4 = require("../../images/blue1.jpg");
 let canvas;
 
 export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {

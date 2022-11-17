@@ -7,7 +7,7 @@
   height: 100%;
 }
 
-%flex-center{
+%flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +69,7 @@ html {
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
   // scroll-behavior: smooth;
-  scrollbar-width: none!important;
+  scrollbar-width: none !important;
   color: var(--clr-contrast-100);
   &:before {
     @extend %top-left-full;
@@ -101,13 +101,11 @@ canvas {
   z-index: -10;
 }
 
-.canvas__wrapper{
-  height:100%;
+.canvas__wrapper {
+  height: 100%;
   position: fixed;
   width: 100%;
 }
-
-
 
 h1,
 h2,
@@ -206,7 +204,6 @@ a {
 
 .btn__primary,
 .btn__outline {
-  @extend %trans;
   display: block;
   font-family: $ff-header;
   background-color: transparent;
@@ -221,9 +218,20 @@ a {
 }
 
 .btn__primary {
-  background-color: transparent;
+  background-color: var(--clr-primary-200);
   border: none;
-  color: var(--clr-contrast-100);
+  color: transparent;
+  position: relative;
+  & img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .btn__outline {
@@ -235,34 +243,33 @@ a {
   animation: empty 0s;
   animation-iteration-count: 1;
   animation-play-state: paused;
-  &:hover{
+  &:hover {
     box-shadow: inset 0 0 0 2px transparent;
     color: transparent;
   }
-  &:hover:before{
+  &:hover:before {
     animation-play-state: running;
     animation: offsetGlitch 2s;
     animation-iteration-count: infinite;
   }
-  &:hover:after{
+  &:hover:after {
     animation-play-state: running;
     animation: offsetGlitchCounter 2s;
     animation-iteration-count: infinite;
   }
-   &:after{
-    content:attr(data-link-text);
+  &:after {
+    content: attr(data-link-text);
     color: var(--clr-contrast-100);
-    @extend %absolute-full, %trans, %flex-center;
+    @extend %absolute-full, %flex-center;
     position: absolute;
     box-shadow: inset 0px 0px 0px 2px var(--clr-contrast-100);
     filter: sepia(0) hue-rotate(0deg);
     animation: empty 0s;
     animation-iteration-count: 1;
     animation-play-state: paused;
-
   }
-  &:before{
-    content:attr(data-link-text);
+  &:before {
+    content: attr(data-link-text);
     color: var(--clr-contrast-100);
     @extend %absolute-full, %trans, %flex-center;
     position: absolute;
@@ -270,9 +277,7 @@ a {
     animation: empty 0s;
     animation-iteration-count: 1;
     animation-play-state: paused;
-  
   }
-
 }
 
 @keyframes empty {
@@ -283,83 +288,188 @@ a {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  14%{
+  14% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
   15% {
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
   17% {
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
-  18%{
+  18% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  28%{
+  28% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  29%{
-    clip-path: polygon(0 100%, 100% 100%, 100% 88%, 0 88%, 0 65%, 100% 65%, 100% 22%, 0 22%, 0 15%, 100% 15%, 100% 0, 0 0);
+  29% {
+    clip-path: polygon(
+      0 100%,
+      100% 100%,
+      100% 88%,
+      0 88%,
+      0 65%,
+      100% 65%,
+      100% 22%,
+      0 22%,
+      0 15%,
+      100% 15%,
+      100% 0,
+      0 0
+    );
     transform: translateX(0px);
   }
-  30%{
-    clip-path: polygon(0 100%, 100% 100%, 100% 88%, 0 88%, 0 65%, 100% 65%, 100% 22%, 0 22%, 0 15%, 100% 15%, 100% 0, 0 0);
+  30% {
+    clip-path: polygon(
+      0 100%,
+      100% 100%,
+      100% 88%,
+      0 88%,
+      0 65%,
+      100% 65%,
+      100% 22%,
+      0 22%,
+      0 15%,
+      100% 15%,
+      100% 0,
+      0 0
+    );
     transform: translateX(0px);
   }
-  31%{
+  31% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  44%{
+  44% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  45%{
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+  45% {
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
-  50%{
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+  50% {
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
-  51%{
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+  51% {
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
-  52%{
-    clip-path: polygon(100% 66%, 0% 66%, 0% 100%, 100% 100%, 100% 44%, 0% 44%, 0% 0%, 100% 0%);
+  52% {
+    clip-path: polygon(
+      100% 66%,
+      0% 66%,
+      0% 100%,
+      100% 100%,
+      100% 44%,
+      0% 44%,
+      0% 0%,
+      100% 0%
+    );
     transform: translateX(0px);
   }
-  53%{
+  53% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  79%{
+  79% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  80%{
-    clip-path: polygon(0 100%, 100% 100%, 100% 88%, 0 88%, 0 65%, 100% 65%, 100% 22%, 0 22%, 0 15%, 100% 15%, 100% 0, 0 0);
+  80% {
+    clip-path: polygon(
+      0 100%,
+      100% 100%,
+      100% 88%,
+      0 88%,
+      0 65%,
+      100% 65%,
+      100% 22%,
+      0 22%,
+      0 15%,
+      100% 15%,
+      100% 0,
+      0 0
+    );
     transform: translateX(0px);
   }
-  83%{
-    clip-path: polygon(0 100%, 100% 100%, 100% 88%, 0 88%, 0 65%, 100% 65%, 100% 22%, 0 22%, 0 15%, 100% 15%, 100% 0, 0 0);
+  83% {
+    clip-path: polygon(
+      0 100%,
+      100% 100%,
+      100% 88%,
+      0 88%,
+      0 65%,
+      100% 65%,
+      100% 22%,
+      0 22%,
+      0 15%,
+      100% 15%,
+      100% 0,
+      0 0
+    );
     transform: translateX(-10px);
   }
-  84%{
+  84% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-  100%{
+  100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
   }
-
 }
 
 @keyframes offsetGlitchCounter {
@@ -370,134 +480,169 @@ a {
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  14%{
+  14% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  15%{
+  15% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(2px);
     filter: sepia(1) hue-rotate(45deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  17%{
+  17% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(2px);
     filter: sepia(1) hue-rotate(90deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
   }
-  18%{
+  18% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  28%{
+  28% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  29%{
-    clip-path: polygon(100% 88%, 0 88%,  100% 65%, 0 65%, 0 22%, 100% 22%, 100% 15%, 0 15%);
+  29% {
+    clip-path: polygon(
+      100% 88%,
+      0 88%,
+      100% 65%,
+      0 65%,
+      0 22%,
+      100% 22%,
+      100% 15%,
+      0 15%
+    );
     transform: translateX(10px);
     filter: sepia(1) hue-rotate(90deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
   }
-  30%{
-    clip-path: polygon(100% 88%, 0 88%,  100% 65%, 0 65%, 0 22%, 100% 22%, 100% 15%, 0 15%);
+  30% {
+    clip-path: polygon(
+      100% 88%,
+      0 88%,
+      100% 65%,
+      0 65%,
+      0 22%,
+      100% 22%,
+      100% 15%,
+      0 15%
+    );
     transform: translateX(10px);
     filter: sepia(1) hue-rotate(45deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
-
   }
-  31%{
+  31% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  44%{
+  44% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  45%{
+  45% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(0px);
     filter: sepia(1) hue-rotate(90deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
   }
-  50%{
+  50% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(15px);
     filter: sepia(1) hue-rotate(90deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
   }
-  51%{
+  51% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(15px);
     filter: sepia(1) hue-rotate(90deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  52%{
+  52% {
     clip-path: polygon(0% 66%, 100% 66%, 100% 44%, 0% 44%);
     transform: translateX(0px);
     filter: sepia(1) hue-rotate(90deg);
     color: hsl(154, 91.5%, 62.9%);
     box-shadow: inset 0 0 0 2px hsl(154, 91.5%, 62.9%);
   }
-  53%{
+  53% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  79%{
+  79% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  80%{
-    clip-path: polygon(100% 88%, 0 88%,  100% 65%, 0 65%, 0 22%, 100% 22%, 100% 15%, 0 15%);
+  80% {
+    clip-path: polygon(
+      100% 88%,
+      0 88%,
+      100% 65%,
+      0 65%,
+      0 22%,
+      100% 22%,
+      100% 15%,
+      0 15%
+    );
     transform: translateX(2px);
     filter: sepia(0) hue-rotate(0deg);
     color: rgb(16, 242, 144);
     box-shadow: inset 0 0 0 2px rgb(23, 255, 155);
   }
-  83%{
-    clip-path: polygon(100% 88%, 0 88%,  100% 65%, 0 65%, 0 22%, 100% 22%, 100% 15%, 0 15%);
+  83% {
+    clip-path: polygon(
+      100% 88%,
+      0 88%,
+      100% 65%,
+      0 65%,
+      0 22%,
+      100% 22%,
+      100% 15%,
+      0 15%
+    );
     transform: translateX(2px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  84%{
+  84% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
     color: var(--clr-contrast-100);
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
-  100%{
+  100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: translateX(0px);
     filter: sepia(0) hue-rotate(0deg);
@@ -506,12 +651,71 @@ a {
   }
 }
 
+.btn-inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  color:var(--clr-contrast-100);
+  margin: 0;
+  align-items: center;
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   width: 20px;
+  //   height: 10px;
+  //   background-color: var(--clr-primary-200);
+  //   right: -20px;
+  //   bottom: 0;
+  // }
+
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   width: 20px;
+  //   height: 10px;
+  //   background-color: var(--clr-primary-200);
+  //   left: 0;
+  //   bottom: 0;
+  // }
+  // & > div {
+  //   width: 100%;
+  //   height: 100%;
+  //   top: 0;
+  //   left: 0;
+  //   position: absolute;
+  //   z-index: -1;
+  //   &:after {
+  //     content: "";
+  //     position: absolute;
+  //     bottom: 0;
+  //     height: 70%;
+  //     right: -10px;
+  //     width: 100%;
+  //     background-color: var(--clr-primary-200);
+  //   }
+
+  //   &:before {
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     height: 70%;
+  //     left: -10px;
+  //     width: 100%;
+  //     background-color: var(--clr-primary-200);
+  //   }
+  // }
+}
+
 .main {
   position: relative;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -541,7 +745,7 @@ a {
   padding-bottom: 100px;
 }
 
-#data-scroll-content{
+#data-scroll-content {
   will-change: transform;
 }
 
@@ -564,6 +768,9 @@ div[data-scroll-content] .frame:first-child {
     padding-left: 15%;
     padding-right: 15%;
   }
+}
+.error__container {
+  @extend %flex-center, %flex-full;
 }
 
 .loader {

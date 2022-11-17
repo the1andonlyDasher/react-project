@@ -2,9 +2,11 @@
 
 import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { WebGLProvider } from "./js/context";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import { Window } from "./js/webGL";
-import { DomGL } from "./js/DomGL";
+import GL from "./js/GL";
+
 export default function App() {
   const loader = document.querySelector(".loader");
 
@@ -20,7 +22,10 @@ export default function App() {
   return (
     <>
       <Router>
-        <AnimatedRoutes />
+        <WebGLProvider>
+          <GL />
+          <AnimatedRoutes />
+        </WebGLProvider>
       </Router>
       <Loader hideLoader={hideLoader} showLoader={showLoader}></Loader>
     </>

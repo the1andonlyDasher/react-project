@@ -8,6 +8,7 @@ import Navbar from "../components/navbar";
 import gsap from "gsap";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass.js";
 import { GlitchPass } from "../js/glitchPass.js";
 import "../js/checkAnim";
 import "../js/scroll";
@@ -149,9 +150,14 @@ const Window = () => {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
+    const filmPass = new FilmPass(0.85, 0.025, 648, false);
+
     glitchPass = new GlitchPass();
+    glitchPass.curF = 0;
     glitchPass.enabled = false;
+    glitchPass.goWild = false;
     composer.addPass(glitchPass);
+    composer.addPass(filmPass);
 
     // ********************************************************
     // ------------------- loader start ---------------------
@@ -366,7 +372,7 @@ const Window = () => {
         camera.updateProjectionMatrix();
       }
       requestAnimationFrame(animate);
-      //renderer.render(scene, camera);
+
       composer.render(scene, camera);
 
       if (window.setBlurry.is === true || window.hoverItem.hovering === true) {

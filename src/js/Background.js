@@ -3,7 +3,7 @@ import "../js/scroll";
 import "../js/hoverImg";
 
 let images = [
-  require("../images/bg2.webp"),
+  require("../images/bg2.png"),
   require("../images/page1.webp"),
   require("../images/page2.webp"),
   require("../images/page3.webp"),
@@ -159,6 +159,9 @@ while (i < counter) {
     texture.needsUpdate = false;
     texture.minFilter = THREE.LinearMipmapLinearFilter;
     texture.generateMipmaps = false;
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    texture.minFilter = THREE.LinearMipmapLinearFilter;
+    texture.needsUpdate = true;
   });
   textures.push(texture);
   i += 1;
@@ -204,8 +207,6 @@ function animate(time) {
 
   bgMesh.material.uniforms.iChannel0.value =
     textures[`${window.hoverItem.hoverImg}`];
-  bgMesh.material.uniforms.iChannel0.value.wrapS = THREE.RepeatWrapping;
-  bgMesh.material.uniforms.iChannel0.value.wrapT = THREE.RepeatWrapping;
 
   requestAnimationFrame(animate);
 }

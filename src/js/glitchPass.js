@@ -14,7 +14,7 @@ import {
 import { DigitalGlitch } from "three/examples/jsm/shaders/DigitalGlitch.js";
 
 class GlitchPass extends Pass {
-  constructor(dt_size = 8) {
+  constructor(dt_size = 64) {
     super();
 
     if (DigitalGlitch === undefined)
@@ -33,9 +33,8 @@ class GlitchPass extends Pass {
     });
 
     this.fsQuad = new FullScreenQuad(this.material);
-
-    this.goWild = false;
     this.curF = 20;
+    this.goWild = false;
     this.generateTrigger();
   }
 
@@ -49,13 +48,13 @@ class GlitchPass extends Pass {
 
     if (this.curF % this.randX == 0 || this.goWild == true) {
       this.uniforms["seed"].value = 0; //default seeding is Math.random();
-      this.uniforms["amount"].value = Math.random() / 10;
+      this.uniforms["amount"].value = Math.random();
       this.uniforms["angle"].value = MathUtils.randFloat(-Math.PI, Math.PI);
       this.uniforms["seed_x"].value = MathUtils.randFloat(-0.3, 0.3);
       this.uniforms["seed_y"].value = MathUtils.randFloat(-0.3, 0.3);
-      this.uniforms["distortion_x"].value = MathUtils.randFloat(0, 1) * 2;
-      this.uniforms["distortion_y"].value = MathUtils.randFloat(0, 1) * 2;
-      this.uniforms["byp"].value = 0.5;
+      this.uniforms["distortion_x"].value = MathUtils.randFloat(0, 1);
+      this.uniforms["distortion_y"].value = MathUtils.randFloat(0, 1);
+      this.uniforms["byp"].value = 0;
       this.curF = 0;
       this.generateTrigger();
     } else if (this.curF % this.randX < this.randX / 5) {

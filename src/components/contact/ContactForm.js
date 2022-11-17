@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { WebGLButton } from "../../js/context";
+import { Button } from "../button";
+const img = require("../../images/button.webp");
 
 const ContactForm = ({ title, subtitle, sectionName, id }) => {
   const form = useRef();
@@ -50,9 +53,10 @@ const ContactForm = ({ title, subtitle, sectionName, id }) => {
           <label htmlFor="message">Message:</label>
           <textarea id="message" required rows="5" />
         </div>
-        <button className="btn btn__primary btn__medium" type="submit">
+        {/* <WebGLButton type={"submit"} src={img} text="Los geht's!" /> */}
+        <Button type="submit" gl={true} to="/">
           {status}
-        </button>
+        </Button>
       </form>
     </section>
   );

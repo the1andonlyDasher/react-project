@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Scrollbar from "../components/scrollbar";
+import useDOMChange from "../js/pageState";
 
-export default function ImprintPage() {
+export default function ImprintPage(props) {
+  useEffect(() => {
+    state.action();
+    console.log(state.toString());
+  }, []);
   const variants = {
     hidden: { opacity: 0 },
     enter: { opacity: 1, delay: 1, duration: 1 },
@@ -25,30 +30,27 @@ export default function ImprintPage() {
       transition={{ type: "tween", duration: 0.75, delay: 0.2 + index * 0.2 }}
     ></motion.li>
   );
-
+  const state = useDOMChange();
+  const status = state.toString();
   return (
     <>
-      <motion.ul className="transition">
+      {/* <motion.ul className="transition">
         {items.map((_, index) => (
           <Item key={index} index={index} />
         ))}
-      </motion.ul>
+      </motion.ul> */}
       <motion.main
         variants={variants}
         initial="hidden"
         animate="enter"
         exit="exit"
-        className="main"
         transition={{ type: "tween", duration: 1 }}
-        onAnimationStart={() => {
-          window.setBlurry.is = true;
-          setTimeout(() => {
-            window.setBlurry.is = false;
-          }, 2000);
-        }}
+        className="main"
       >
         <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <section className="legal">
+          {/* <h3>{status}</h3>
+          <button onClick={state.action}>change state</button> */}
           <h2>Impressum</h2>
           <h3>Dienstanbieter</h3>
           <p>

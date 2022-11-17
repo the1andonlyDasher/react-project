@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Scrollbar from "../components/scrollbar.js";
+import useDOMChange from "../js/pageState.js";
 
 export default function DataPage() {
+  const state = useDOMChange();
+  useEffect(() => {
+    state.action();
+    console.log(state.toString());
+  }, []);
+
   const variants = {
     hidden: { opacity: 0 },
     enter: { opacity: 1, delay: 1, duration: 1 },
@@ -27,24 +34,21 @@ export default function DataPage() {
   );
   return (
     <>
-      <motion.ul className="transition">
+      {/* <motion.ul className="transition">
         {items.map((_, index) => (
           <Item key={index} index={index} />
         ))}
-      </motion.ul>
+      </motion.ul> */}
       <motion.main
-        className="main"
         variants={variants}
         initial="hidden"
         animate="enter"
         exit="exit"
         transition={{ type: "tween", duration: 1 }}
-        onAnimationStart={() => {
-          window.setBlurry.is = true;
-          setTimeout(() => {
-            window.setBlurry.is = false;
-          }, 2000);
+        onChange={() => {
+          console.log("animation started");
         }}
+        className="main"
       >
         <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <section>

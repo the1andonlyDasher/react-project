@@ -1,20 +1,13 @@
-//  src/components/home.js
-import React from "react";
-import { WebGLButton } from "../../js/context";
-import button, { Button } from "../../components/button";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import TileHeros from "./TileHeros";
-const img = require("../../images/button.webp");
 
-export default function Hero() {
+export default function ErrorPage() {
   const variants = {
     initial: {
       clipPath: "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
       filter: "sepia(1) hue-rotate(0deg)",
-      opacity: 0,
     },
     animate: {
-      opacity: 1,
       filter: [
         "sepia(1) hue-rotate(45deg)",
         "sepia(1) hue-rotate(90deg)",
@@ -59,7 +52,6 @@ export default function Hero() {
       ],
     },
     exit: {
-      opacity: 0,
       clipPath: [
         "polygon(-100% 300%, 400% 300%, 400% 0, -100% -100%)",
         "polygon( 0% 0%, 0% 100%, 8% 100%, 7% 13%, 39% 13%, 40% 76%, 7% 76%, 8% 100%, 100% 100%, 100% 0% )",
@@ -83,36 +75,68 @@ export default function Hero() {
       ],
     },
   };
+  const item = {
+    hidden: { scaleY: 1 },
+    animate: { scaleY: 0 },
+    exit: { scaleY: 1 },
+  };
+  const defaultItems = [...Array(5)];
+  const [items] = useState(defaultItems);
+  const Item = ({ index }) => (
+    <motion.li
+      key={index}
+      variants={item}
+      initial="hidden"
+      animate="animate"
+      exit="exit"
+      transition={{ type: "tween", duration: 0.75, delay: 0.2 + index * 0.2 }}
+      onAnimationComplete={() => {
+        window.completedAnimation.status = true;
+      }}
+    ></motion.li>
+  );
   return (
     <>
-      <div className="container">
-        <TileHeros />
-        <motion.div
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{
-            type: "spring",
-            velocity: "10",
-            stiffness: 1000,
-            restSpeed: 0.5,
-            duration: 1,
-            delay: 1,
-          }}
-        >
-          <div id="mainHero">
-            <h3>Weil es nicht nur eine Website ist:</h3>
-            <h1 data-before="Wir hinterlassen bleibende Eindrücke">
-              Wir hinterlassen bleibende Eindrücke
-            </h1>
-          </div>
-          {/* <WebGLButton src={img} text="Los geht's!" /> */}
-          <Button gl={true} to="/">
-            Los geht's!
-          </Button>
-        </motion.div>
-      </div>
+      <motion.ul className="transition">
+        {items.map((_, index) => (
+          <Item key={index} index={index} />
+        ))}
+      </motion.ul>
+      <motion.main
+        variants={variants}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        className="main"
+        onAnimationStart={() => {
+          window.setBlurry.is = true;
+          setTimeout(() => {
+            window.setBlurry.is = false;
+            window.scrollTo(0, 0);
+          }, 1000);
+        }}
+        onAnimationEnd={() => {}}
+        //transition={{ type: "tween", duration: 1 }}
+      >
+        <section className="error__container">
+          <motion.div
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              type: "spring",
+              velocity: "10",
+              stiffness: 1000,
+              restSpeed: 0.5,
+              duration: 1,
+              delay: 1,
+            }}
+          >
+            <h1 data-before="...Error 404">Hier suchen Sie vergebens...</h1>
+          </motion.div>
+        </section>
+      </motion.main>
     </>
   );
 }

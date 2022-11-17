@@ -405,7 +405,13 @@ template {
   src: local("Fira Sans"), url(../fonts/FiraSans-ExtraBold.woff2) format("woff2"), local("Fira Sans"), url(../fonts/FiraSans-ExtraBold.ttf) format("truetype");
 }
 /* base classes */
-.buttons-wrapper, .btn__outline:before, .btn__outline:after {
+.error__container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.buttons-wrapper, .error__container, .btn__outline:before, .btn__outline:after {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -422,8 +428,7 @@ template {
 
 #ad__Li,
 #ad__Ad, #ad__Li.appear,
-#ad__Ad.appear, .btn__outline:before, .btn__outline:after, .btn__primary,
-.btn__outline {
+#ad__Ad.appear, .btn__outline:before {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -611,9 +616,20 @@ a {
 }
 
 .btn__primary {
-  background-color: transparent;
+  background-color: var(--clr-primary-200);
   border: none;
-  color: var(--clr-contrast-100);
+  color: transparent;
+  position: relative;
+}
+.btn__primary img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .btn__outline {
@@ -885,12 +901,25 @@ a {
     box-shadow: inset 0 0 0 2px var(--clr-contrast-100);
   }
 }
+.btn-inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  color: var(--clr-contrast-100);
+  margin: 0;
+  align-items: center;
+}
+
 .main {
   position: relative;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
 }
 
