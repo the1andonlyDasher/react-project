@@ -1,11 +1,9 @@
 {
   "files": {
-    "main.css": "/wicked-hand/static/css/main.5c68003f.css",
-    "main.js": "/wicked-hand/static/js/main.ee62fa36.js",
-    "static/media/bg2.png": "/wicked-hand/static/media/bg2.b95a909b704101fd0d8b.png",
+    "main.css": "/wicked-hand/static/css/main.825257ab.css",
+    "main.js": "/wicked-hand/static/js/main.fc272b38.js",
     "static/media/FiraSans-ExtraBold.ttf": "/wicked-hand/static/media/FiraSans-ExtraBold.4cefd111bf6571164e73.ttf",
     "static/media/FiraSans-ExtraBold.woff2": "/wicked-hand/static/media/FiraSans-ExtraBold.00cfaa4c1d03da2f789b.woff2",
-    "static/media/blue1.jpg": "/wicked-hand/static/media/blue1.0a8e144404fe1d4af5e3.jpg",
     "static/media/page1.webp": "/wicked-hand/static/media/page1.06ce458cbf55082d2366.webp",
     "static/media/CourierPrime-Regular.ttf": "/wicked-hand/static/media/CourierPrime-Regular.7503a2e9660bb6f608fb.ttf",
     "static/media/Catamaran-Regular.ttf": "/wicked-hand/static/media/Catamaran-Regular.9d1e07185ada617251f8.ttf",
@@ -16,6 +14,7 @@
     "static/media/bg.png": "/wicked-hand/static/media/bg.ddca51ef7aeb6d4acbe3.png",
     "static/media/Catamaran-Regular.woff2": "/wicked-hand/static/media/Catamaran-Regular.00846f7b706ec4d9244e.woff2",
     "static/media/Catamaran-Black.woff2": "/wicked-hand/static/media/Catamaran-Black.c07d1921865d86e6fb10.woff2",
+    "static/media/bg3.png": "/wicked-hand/static/media/bg3.d6f07dc8e9e1a4453f44.png",
     "static/media/logo.webp": "/wicked-hand/static/media/logo.05b511148eda0abc585c.webp",
     "index.html": "/wicked-hand/index.html",
     "static/media/Gruppe_7.svg": "/wicked-hand/static/media/Gruppe_7.ae55c87db9d7155175e50f1ab5628af6.svg",
@@ -23,11 +22,11 @@
     "static/media/button.webp": "/wicked-hand/static/media/button.97e0b0a34c999bdc3945.webp",
     "static/media/Gruppe_3.svg": "/wicked-hand/static/media/Gruppe_3.2c76c070457d18bdf795fc5f5a57f454.svg",
     "static/media/Gruppe_1.svg": "/wicked-hand/static/media/Gruppe_1.0c947f612c9c42bd36b63ffb4acb052d.svg",
-    "main.5c68003f.css.map": "/wicked-hand/static/css/main.5c68003f.css.map",
-    "main.ee62fa36.js.map": "/wicked-hand/static/js/main.ee62fa36.js.map"
+    "main.825257ab.css.map": "/wicked-hand/static/css/main.825257ab.css.map",
+    "main.fc272b38.js.map": "/wicked-hand/static/js/main.fc272b38.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c68003f.css",
-    "static/js/main.ee62fa36.js"
+    "static/css/main.825257ab.css",
+    "static/js/main.fc272b38.js"
   ]
 }
