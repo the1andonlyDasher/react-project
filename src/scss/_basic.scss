@@ -659,7 +659,7 @@ a {
   height: 100%;
   display: flex;
   justify-content: center;
-  color:var(--clr-contrast-100);
+  color: var(--clr-contrast-100);
   margin: 0;
   align-items: center;
   // &:after {
@@ -720,20 +720,24 @@ a {
 }
 
 .main section {
+  @extend %flex-center;
   height: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  padding: 1.5rem;
+  padding: 150px 15% 1rem 15%;
   width: 100%;
-  padding-top: 150px;
-  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   position: relative;
   @include mq(medium) {
     padding-left: 15%;
     padding-right: 15%;
+  }
+  .__s__b {
+    @extend %flex-center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
   }
 }
 

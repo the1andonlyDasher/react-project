@@ -7,13 +7,9 @@ import { motion } from "framer-motion";
 import ContactForm from "../components/contact/ContactForm";
 import Scrollbar from "../components/scrollbar";
 import useDOMChange from "../js/pageState";
+import Navbar from "../components/navbar";
 
 export default function Home_page() {
-  const state = useDOMChange();
-  useEffect(() => {
-    state.action();
-    console.log(state.toString());
-  }, []);
   const variants = {
     hidden: { opacity: 0 },
     enter: { opacity: 1 },
@@ -38,6 +34,7 @@ export default function Home_page() {
   );
   return (
     <>
+      <Navbar main={true} />
       {/* <motion.ul className="transition">
         {items.map((_, index) => (
           <Item key={index} index={index} />

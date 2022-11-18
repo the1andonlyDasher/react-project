@@ -13,6 +13,7 @@ export const Button = ({
   onClick,
   buttonStyle,
   buttonSize,
+  inner,
   dl,
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
@@ -197,7 +198,7 @@ export const Button = ({
   return (
     <Link to={to} className="btn-mobile">
       <motion.button
-        animate={animate}
+        animate={inner ? animate : undefined}
         onHoverStart={() => {
           controlsInner.start("animate");
           cycle();
@@ -218,17 +219,18 @@ export const Button = ({
         type={type}
       >
         {children}
-        <motion.div
-          variants={variantsButton}
-          initial={"initial"}
-          animate={controlsInner}
-          onHoverStart={() => {}}
-          onHoverEnd={() => {}}
-          className="btn-inner"
-        >
-          {/* <div></div> */}
-          {children}
-        </motion.div>
+        {inner ? (
+          <motion.div
+            variants={variantsButton}
+            initial={"initial"}
+            animate={controlsInner}
+            onHoverStart={() => {}}
+            onHoverEnd={() => {}}
+            className="btn-inner"
+          >
+            {children}
+          </motion.div>
+        ) : null}
       </motion.button>
     </Link>
   );

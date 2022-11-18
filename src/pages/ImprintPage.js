@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Scrollbar from "../components/scrollbar";
-import useDOMChange from "../js/pageState";
+import Navbar from "../components/navbar";
 
 export default function ImprintPage(props) {
-  useEffect(() => {
-    state.action();
-    console.log(state.toString());
-  }, []);
   const variants = {
     hidden: { opacity: 0 },
-    enter: { opacity: 1, delay: 1, duration: 1 },
-    exit: { opacity: 1 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
   };
   const item = {
     hidden: { scaleY: 1 },
@@ -30,10 +26,9 @@ export default function ImprintPage(props) {
       transition={{ type: "tween", duration: 0.75, delay: 0.2 + index * 0.2 }}
     ></motion.li>
   );
-  const state = useDOMChange();
-  const status = state.toString();
   return (
     <>
+      <Navbar main={false} />
       {/* <motion.ul className="transition">
         {items.map((_, index) => (
           <Item key={index} index={index} />
@@ -49,13 +44,12 @@ export default function ImprintPage(props) {
       >
         <Scrollbar stiffness={50} restdelta={0.001} damping={20} />
         <section className="legal">
-          {/* <h3>{status}</h3>
-          <button onClick={state.action}>change state</button> */}
           <h2>Impressum</h2>
           <h3>Dienstanbieter</h3>
           <p>
-            Wicked Hand Design Falko Puchalla, Jens Friedrich GbR 73230
-            Kirchheim
+            Wicked Hand Design Falko Puchalla, Jens Friedrich GbR <br></br>
+            Arberstraße 13<br></br>
+            73230 Kirchheim
           </p>
           <h3>Kontakt</h3>
           <p>
@@ -64,7 +58,7 @@ export default function ImprintPage(props) {
             E-Mail: kontakt@wickedhanddesign.de <br></br>
             Website: www.wickedhanddesign.de <br></br>
             Bei redaktionellen Inhalten: Verantwortlich nach § 55 Abs.2 RStV
-            Falko Puchalla 73230 Kirchheim
+            Falko Puchalla Arberstraße 13 73230 Kirchheim
           </p>
           <h3>Online-Streitbeilegung (OS)</h3>
           <p>

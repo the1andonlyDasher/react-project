@@ -411,7 +411,7 @@ template {
   height: 100%;
 }
 
-.buttons-wrapper, .error__container, .btn__outline:before, .btn__outline:after {
+.buttons-wrapper, .error__container, .main section .__s__b, .main section, .btn__outline:before, .btn__outline:after {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -927,13 +927,9 @@ a {
   height: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  padding: 1.5rem;
+  padding: 150px 15% 1rem 15%;
   width: 100%;
-  padding-top: 150px;
-  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   position: relative;
 }
 @media screen and (min-width: 880px) {
@@ -941,6 +937,12 @@ a {
     padding-left: 15%;
     padding-right: 15%;
   }
+}
+.main section .__s__b {
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .main section:first-of-type {
@@ -3041,7 +3043,7 @@ div[data-scroll-content] .frame:first-child header {
   height: 100%;
 }
 
-.container, .nav__tiles > div, #right-wrapper {
+.horizontal__features div, .feature-grid > div, .container, .nav__tiles > div, #right-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3170,8 +3172,13 @@ div[data-scroll-content] .frame:first-child header {
 }
 
 .grid {
-  display: grid;
+  display: none;
   gap: var(--gap, 1rem);
+}
+@media screen and (min-width: 880px) {
+  .grid {
+    display: grid;
+  }
 }
 
 .grid--columns {
@@ -3205,7 +3212,7 @@ div[data-scroll-content] .frame:first-child header {
   transform: rotateY(-40deg);
 }
 
-.feature-grid > button {
+.feature-grid > div {
   position: relative;
   border-radius: 0.1em;
   transition: transform 350ms ease-in-out;
@@ -3215,7 +3222,7 @@ div[data-scroll-content] .frame:first-child header {
   border: none;
   will-change: transform;
 }
-.feature-grid > button:hover svg {
+.feature-grid > div:hover svg {
   animation-play-state: running;
   animation: glitch 2s;
   animation-iteration-count: infinite;
@@ -3244,7 +3251,7 @@ div[data-scroll-content] .frame:first-child header {
     opacity: 1;
   }
 }
-.feature-grid > button img {
+.feature-grid > div img {
   position: absolute;
   top: 0;
   left: 0;
@@ -3252,7 +3259,7 @@ div[data-scroll-content] .frame:first-child header {
   width: auto;
 }
 
-.feature-grid button svg {
+.feature-grid div svg {
   height: 50% !important;
   color: var(--clr-contrast-200);
   animation: empty 2s;
@@ -3335,8 +3342,8 @@ div[data-scroll-content] .frame:first-child header {
     filter: drop-shadow(0em 0 0 rgba(113, 255, 134, 0));
   }
 }
-.feature-grid > button:hover,
-.feature-grid > button:focus-visible {
+.feature-grid > div:hover,
+.feature-grid > div:focus-visible {
   transform: scale(1.2);
   box-shadow: 0 0 1.5rem hsla(0deg, 0%, 100%, 0.8);
 }
@@ -3379,6 +3386,40 @@ div[data-scroll-content] .frame:first-child header {
 .feature-grid > :nth-child(8) {
   grid-column: 7/9;
   grid-row: 9/11;
+}
+
+.horizontal__features {
+  height: 100px;
+  width: auto;
+  justify-content: space-around;
+  display: flex;
+  position: absolute;
+  left: 0;
+}
+.horizontal__features div {
+  width: 100%;
+  margin: 0 1rem;
+  border: none;
+  border-radius: 1px;
+  overflow: hidden;
+  color: var(--clr-contrast-100);
+  font-size: var(--fs-sub-small);
+  outline: none;
+}
+@media screen and (min-width: 880px) {
+  .horizontal__features {
+    display: none;
+  }
+}
+
+.container__features {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  height: 150px;
+  overflow-x: scroll;
+}
+.container__features::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-items-mobile, .navbar__container, .navbar #image-wrapper-blue, .navbar #image-wrapper-white {
@@ -3855,16 +3896,13 @@ form .btn-group, form {
 
 form {
   flex: 1 1 100%;
+  margin: 0 auto 0 0;
   flex-direction: column;
   width: 100%;
-  max-width: 350px;
+  margin: 0;
+  flex: 1 1 auto;
   min-width: 250px;
   color: var(--clr-contrast-100);
-}
-@media screen and (min-width: 880px) {
-  form {
-    margin: 0 auto;
-  }
 }
 
 form div {
@@ -3872,6 +3910,10 @@ form div {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+form :is(#name, #email) {
+  max-width: 500px;
 }
 
 fieldset {
@@ -3926,6 +3968,10 @@ textarea:focus-visible {
 
 form .btn-group {
   width: 100%;
+}
+
+form a {
+  margin: 1rem auto 0 0;
 }
 
 form button {

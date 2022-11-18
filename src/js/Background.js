@@ -3,7 +3,7 @@ import "../js/scroll";
 import "../js/hoverImg";
 
 let images = [
-  require("../images/bg2.png"),
+  require("../images/bg3.png"),
   require("../images/page1.webp"),
   require("../images/page2.webp"),
   require("../images/page3.webp"),

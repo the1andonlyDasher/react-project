@@ -3,7 +3,7 @@ import React from "react";
 import { WebGLButton } from "../../js/context";
 import button, { Button } from "../../components/button";
 import { motion } from "framer-motion";
-import TileHeros from "./TileHeros";
+import { TileHeros } from "./TileHeros";
 const img = require("../../images/button.webp");
 
 export default function Hero() {
@@ -108,7 +108,7 @@ export default function Hero() {
             </h1>
           </div>
           {/* <WebGLButton src={img} text="Los geht's!" /> */}
-          <Button gl={true} to="/">
+          <Button gl={true} to="/" inner={true}>
             Los geht's!
           </Button>
         </motion.div>

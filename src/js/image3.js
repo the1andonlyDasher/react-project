@@ -4,7 +4,9 @@ import { LinearMipmapLinearFilter, RepeatWrapping } from "three";
 import f from "../components/gl/f";
 import v from "../components/gl/v";
 
-export default class Button extends THREE.ShaderMaterial {
+const bg = require("../images/page2.webp");
+
+export default class Button3 extends THREE.ShaderMaterial {
   constructor() {
     super({
       uniforms: {
@@ -12,7 +14,7 @@ export default class Button extends THREE.ShaderMaterial {
         iTime: { type: "f", value: 0.0 },
         iChannel0: {
           type: "t",
-          value: undefined,
+          value: bg,
         },
       },
       vertexShader: v,
@@ -34,4 +36,4 @@ export default class Button extends THREE.ShaderMaterial {
 }
 
 // register element in r3f (<image />)
-extend({ Button });
+extend({ Button3 });

@@ -1,15 +1,7 @@
-import React, {
-  useRef,
-  Suspense,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from "react";
-import { Canvas, useThree, useFrame, extend } from "@react-three/fiber";
+import React, { useRef, Suspense, useMemo, useState } from "react";
+import { Canvas, useThree, extend } from "@react-three/fiber";
 import { LinearMipmapLinearFilter, RepeatWrapping, Vector3 } from "three";
 import { useScroll } from "framer-motion";
-import Navbar from "../components/navbar";
-import { Effects } from "@react-three/drei";
 import {
   Glitch,
   Noise,
@@ -19,12 +11,18 @@ import {
 import { GlitchMode, BlendFunction } from "postprocessing";
 import { GlitchPass } from "./glitchPass";
 import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
-
+import { useBreakpoints, useCurrentWidth } from "react-breakpoints-hook";
 import { Html, useProgress, useTexture, useIntersect } from "@react-three/drei";
 import "./image";
 import useDOMChange from "./pageState";
+import "./hoverImg";
 
-const bg = require("../images/bg2.png");
+const bg = [
+  require("../images/bg3.png"),
+  require("../images/bg3.png"),
+  require("../images/bg3.png"),
+  require("../images/bg3.png"),
+];
 
 extend({ GlitchPass, FilmPass });
 
@@ -213,7 +211,15 @@ export default function GL(props) {
       opacity: 0,
     },
   };
-  const state = useDOMChange();
+  let width = useCurrentWidth();
+  let { xs, sm, md, lg, xl } = useBreakpoints({
+    xs: { min: 0, max: 299 },
+    sm: { min: 300, max: 499 },
+    md: { min: 500, max: 879 },
+    lg: { min: 880, max: 1599 },
+    xl: { min: 1600, max: null },
+  });
+
   return (
     <>
       {/* <button
@@ -247,7 +253,7 @@ export default function GL(props) {
           <Suspense fallback={<Loader />}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Plane img={bg} />
+            <Plane img={bg[`${window.hoverItem.hoverImg}`]} />
             {/* {state.map((image, i) => (
               <Button key={image.props.src + i} image={image} />
             ))} */}
@@ -264,14 +270,13 @@ export default function GL(props) {
             />
             <Scanline
               blendFunction={BlendFunction.OVERLAY}
-              density={1.25}
+              density={width > 850 ? 1.25 : 0.55}
               opacity={0.05}
             />
             <Noise opacity={0.02} />
           </EffectComposer>
         </Canvas>
       </div>
-      <Navbar />
     </>
   );
 }

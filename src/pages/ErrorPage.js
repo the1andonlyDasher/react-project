@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Navbar from "../components/navbar";
 
 export default function ErrorPage() {
   const variants = {
@@ -119,6 +120,7 @@ export default function ErrorPage() {
         //transition={{ type: "tween", duration: 1 }}
       >
         <section className="error__container">
+          <Navbar main={false} />
           <motion.div
             variants={variants}
             initial="initial"

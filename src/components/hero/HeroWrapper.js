@@ -6,12 +6,14 @@ export const HeroWrapper = ({ title, subtitle, sectionName, id }) => {
   return (
     <>
       <section data-section-name={sectionName} id={id}>
-        <div className="lr__wrapper">
-          <div id="left-wrapper">
-            <Hero />
-          </div>
-          <div id="right-wrapper">
-            <Tiles />
+        <div className="__s__b">
+          <div className="lr__wrapper">
+            <div id="left-wrapper">
+              <Hero />
+            </div>
+            <div id="right-wrapper">
+              <Tiles />
+            </div>
           </div>
         </div>
       </section>

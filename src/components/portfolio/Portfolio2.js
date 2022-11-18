@@ -20,18 +20,18 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
   const [dull, isDull] = useState(false);
   window.hoverItem.hovering = show;
   useEffect(() => {
-    canvas = document.getElementById("c");
+    canvas = document.getElementById("canvasWrapper");
     return;
   }, []);
 
   function changeOpacity() {
     dull
-      ? gsap.to(canvas.parentNode.style, {
+      ? gsap.to(canvas.style, {
           opacity: 1,
           duration: 0.3,
           ease: "power2.out",
         })
-      : gsap.to(canvas.parentNode.style, {
+      : gsap.to(canvas.style, {
           opacity: 0.2,
           duration: 0.3,
           ease: "power2.out",
@@ -41,134 +41,136 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
   return (
     <>
       <section data-section-name={sectionName} id={id}>
-        <h2 data-before={title}>{title}</h2>
-        <h3>{subtitle}</h3>
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
-          breakpoints={{
-            1700: {
-              slidesPerView: 3,
-            },
-            1200: {
-              slidesPerView: 3,
-            },
-            640: {
-              slidesPerView: 2,
-            },
-            480: {
-              slidesPerView: 1,
-            },
-          }}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          //onSwiper={(swiper) => console.log(swiper)}
-          //onSlideChange={() => console.log("slide change")}
-        >
-          <SwiperSlide>
-            <div
-              ref={pushRef}
-              onMouseEnter={() => {
-                isShown(true);
-                isDull(true);
-                changeOpacity();
-                window.hoverItem.hoverImg = 1;
-              }}
-              onMouseLeave={() => {
-                isShown(false);
-                isDull(false);
-                changeOpacity();
-                window.hoverItem.hoverImg = 0;
-              }}
-              className="inner"
-            >
-              <Button
-                gl={false}
-                to="\\www.h-c-gebaeudereinigung.de"
-                target="_blank"
-                type="button"
-                buttonSize={"btn__medium"}
-                buttonStyle={"btn__outline"}
-                dl="Anschauen"
+        <div className="__s__b">
+          <h2 data-before={title}>{title}</h2>
+          <h3>{subtitle}</h3>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            breakpoints={{
+              1700: {
+                slidesPerView: 3,
+              },
+              1200: {
+                slidesPerView: 3,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              480: {
+                slidesPerView: 1,
+              },
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            //onSwiper={(swiper) => console.log(swiper)}
+            //onSlideChange={() => console.log("slide change")}
+          >
+            <SwiperSlide>
+              <div
+                ref={pushRef}
+                onMouseEnter={() => {
+                  isShown(true);
+                  isDull(true);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 1;
+                }}
+                onMouseLeave={() => {
+                  isShown(false);
+                  isDull(false);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 0;
+                }}
+                className="inner"
               >
-                Anschauen
-              </Button>
-            </div>
-            <div
-              className="bg"
-              style={{ backgroundImage: `url(${image1})` }}
-            ></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              ref={pushRef}
-              onMouseEnter={() => {
-                isShown(true);
-                isDull(true);
-                changeOpacity();
-                window.hoverItem.hoverImg = 2;
-              }}
-              onMouseLeave={() => {
-                isShown(false);
-                isDull(false);
-                changeOpacity();
-                window.hoverItem.hoverImg = 0;
-              }}
-              className="inner"
-            >
-              <Button
-                gl={false}
-                to="\\www.kammermieten.de"
-                target="_blank"
-                type="button"
-                buttonSize={"btn__medium"}
-                buttonStyle={"btn__outline"}
-                dl="Anschauen"
+                <Button
+                  gl={false}
+                  to="\\www.h-c-gebaeudereinigung.de"
+                  target="_blank"
+                  type="button"
+                  buttonSize={"btn__medium"}
+                  buttonStyle={"btn__outline"}
+                  dl="Anschauen"
+                >
+                  Anschauen
+                </Button>
+              </div>
+              <div
+                className="bg"
+                style={{ backgroundImage: `url(${image1})` }}
+              ></div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div
+                ref={pushRef}
+                onMouseEnter={() => {
+                  isShown(true);
+                  isDull(true);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 2;
+                }}
+                onMouseLeave={() => {
+                  isShown(false);
+                  isDull(false);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 0;
+                }}
+                className="inner"
               >
-                Anschauen
-              </Button>
-            </div>
-            <div
-              className="bg"
-              style={{ backgroundImage: `url(${image2})` }}
-            ></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              ref={pushRef}
-              onMouseEnter={() => {
-                isShown(true);
-                isDull(true);
-                changeOpacity();
-                window.hoverItem.hoverImg = 3;
-              }}
-              onMouseLeave={() => {
-                isShown(false);
-                isDull(false);
-                changeOpacity();
-                window.hoverItem.hoverImg = 0;
-              }}
-              className="inner"
-            >
-              <Button
-                gl={false}
-                to="\\www.cr-jobtraining.de"
-                target="_blank"
-                type="button"
-                buttonSize={"btn__medium"}
-                buttonStyle={"btn__outline"}
-                dl="Anschauen"
+                <Button
+                  gl={false}
+                  to="\\www.kammermieten.de"
+                  target="_blank"
+                  type="button"
+                  buttonSize={"btn__medium"}
+                  buttonStyle={"btn__outline"}
+                  dl="Anschauen"
+                >
+                  Anschauen
+                </Button>
+              </div>
+              <div
+                className="bg"
+                style={{ backgroundImage: `url(${image2})` }}
+              ></div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div
+                ref={pushRef}
+                onMouseEnter={() => {
+                  isShown(true);
+                  isDull(true);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 3;
+                }}
+                onMouseLeave={() => {
+                  isShown(false);
+                  isDull(false);
+                  changeOpacity();
+                  window.hoverItem.hoverImg = 0;
+                }}
+                className="inner"
               >
-                Anschauen
-              </Button>
-            </div>
-            <div
-              className="bg"
-              style={{ backgroundImage: `url(${image3})` }}
-            ></div>
-          </SwiperSlide>
-        </Swiper>
+                <Button
+                  gl={false}
+                  to="\\www.cr-jobtraining.de"
+                  target="_blank"
+                  type="button"
+                  buttonSize={"btn__medium"}
+                  buttonStyle={"btn__outline"}
+                  dl="Anschauen"
+                >
+                  Anschauen
+                </Button>
+              </div>
+              <div
+                className="bg"
+                style={{ backgroundImage: `url(${image3})` }}
+              ></div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </section>
     </>
   );

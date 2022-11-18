@@ -149,7 +149,7 @@
   height: 100%;
 }
 
-.tileHero{
+.tileHero {
   @extend %absolute-full;
   position: absolute;
   opacity: 0;
@@ -161,8 +161,11 @@
 }
 
 .grid {
-  display: grid;
+  display: none;
   gap: var(--gap, 1rem);
+  @include mq(medium) {
+    display: grid;
+  }
 }
 
 .grid--columns {
@@ -202,7 +205,8 @@
   transform: rotateY(-40deg);
 }
 
-.feature-grid > button {
+.feature-grid > div {
+  @extend %flex-center;
   position: relative;
   border-radius: 0.1em;
   transition: transform 350ms ease-in-out;
@@ -242,7 +246,7 @@
   }
 }
 
-.feature-grid > button img {
+.feature-grid > div img {
   position: absolute;
   top: 0;
   left: 0;
@@ -250,7 +254,7 @@
   width: auto;
 }
 
-.feature-grid button svg {
+.feature-grid div svg {
   height: 50% !important;
   color: var(--clr-contrast-200);
   animation: empty 2s;
@@ -343,8 +347,8 @@
   }
 }
 
-.feature-grid > button:hover,
-.feature-grid > button:focus-visible {
+.feature-grid > div:hover,
+.feature-grid > div:focus-visible {
   transform: scale(1.2);
   box-shadow: 0 0 1.5rem hsl(0 0% 100% / 0.8);
 }
@@ -382,4 +386,36 @@
 .feature-grid > :nth-child(8) {
   grid-column: 7/9;
   grid-row: 9/11;
+}
+.horizontal__features {
+  height: 100px;
+  width: auto;
+  justify-content: space-around;
+  display: flex;
+  position: absolute;
+  left: 0;
+  div {
+    @extend %flex-center;
+    width: 100%;
+    margin: 0 1rem;
+    border: none;
+    border-radius: 1px;
+    overflow: hidden;
+    color: var(--clr-contrast-100);
+    font-size: var(--fs-sub-small);
+    outline: none;
+  }
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+.container__features {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  height: 150px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Scrollbar from "../components/scrollbar.js";
-import useDOMChange from "../js/pageState.js";
+import Navbar from "../components/navbar.js";
 
 export default function DataPage() {
-  const state = useDOMChange();
-  useEffect(() => {
-    state.action();
-    console.log(state.toString());
-  }, []);
-
   const variants = {
     hidden: { opacity: 0 },
-    enter: { opacity: 1, delay: 1, duration: 1 },
-    exit: { opacity: 1 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
   };
   const item = {
     hidden: { scaleY: 1 },
@@ -34,6 +28,7 @@ export default function DataPage() {
   );
   return (
     <>
+      <Navbar main={false} />
       {/* <motion.ul className="transition">
         {items.map((_, index) => (
           <Item key={index} index={index} />

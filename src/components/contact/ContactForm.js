@@ -33,31 +33,33 @@ const ContactForm = ({ title, subtitle, sectionName, id }) => {
   };
   return (
     <section data-section-name={sectionName} id={id}>
-      <h2 data-before={title}>{title}</h2>
-      <h3>{subtitle}</h3>
-      <form ref={form} onSubmit={sendEmail}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" required />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            required
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" required rows="5" />
-        </div>
-        {/* <WebGLButton type={"submit"} src={img} text="Los geht's!" /> */}
-        <Button type="submit" gl={true} to="/">
-          {status}
-        </Button>
-      </form>
+      <div className="__s__b">
+        <h2 data-before={title}>{title}</h2>
+        <h3>{subtitle}</h3>
+        <form ref={form} onSubmit={sendEmail}>
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" required />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              required
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div>
+            <label htmlFor="message">Message:</label>
+            <textarea id="message" required rows="5" />
+          </div>
+          {/* <WebGLButton type={"submit"} src={img} text="Los geht's!" /> */}
+          <Button type="submit" gl={true} to="/" inner={true}>
+            {status}
+          </Button>
+        </form>
+      </div>
     </section>
   );
 };

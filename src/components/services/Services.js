@@ -12,35 +12,37 @@ export const Services = ({ title, subtitle, sectionName, id }) => {
   return (
     <>
       <section data-section-name={sectionName} id={id}>
-        <h2 data-before={title}>{title}</h2>
-        <h3>{subtitle}</h3>
-        <div className="base__list">
-          <BaseItem
-            title="Webdesign"
-            subtitle="Ihre digitale Visitenkarte"
-            text={web}
-            backgroundImage={g3}
-            icon={g3}
-          />
-          <BaseItem
-            title="Branding"
-            subtitle="Das Gesicht ihres Unternehmens"
-            text={brand}
-            backgroundImage={g6}
-            icon={g6}
-          />
-          <BaseItem
-            title="Printdesign"
-            subtitle="Marketing - maßgeschneidert"
-            backgroundImage={g1}
-            icon={g1}
-          />
-          <BaseItem
-            title="IT-Service"
-            subtitle="Optimale Vernetzung"
-            backgroundImage={g7}
-            icon={g7}
-          />
+        <div className="__s__b">
+          <h2 data-before={title}>{title}</h2>
+          <h3>{subtitle}</h3>
+          <div className="base__list">
+            <BaseItem
+              title="Webdesign"
+              subtitle="Ihre digitale Visitenkarte"
+              text={web}
+              backgroundImage={g3}
+              icon={g3}
+            />
+            <BaseItem
+              title="Branding"
+              subtitle="Das Gesicht ihres Unternehmens"
+              text={brand}
+              backgroundImage={g6}
+              icon={g6}
+            />
+            <BaseItem
+              title="Printdesign"
+              subtitle="Marketing - maßgeschneidert"
+              backgroundImage={g1}
+              icon={g1}
+            />
+            <BaseItem
+              title="IT-Service"
+              subtitle="Optimale Vernetzung"
+              backgroundImage={g7}
+              icon={g7}
+            />
+          </div>
         </div>
       </section>
     </>

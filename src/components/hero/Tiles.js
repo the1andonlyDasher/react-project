@@ -17,8 +17,8 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
       opacity: 1,
     },
     exit: { scale: 0, opacity: 0 },
-    hover: { scale: 1.2 },
-    hoverEnd: { scale: 1 },
+    hover: { scale: 1.2, zIndex: 10 },
+    hoverEnd: { scale: 1, zIndex: 1 },
   };
   const tileControls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0 });
@@ -35,7 +35,7 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
   }, [tileControls, inView]);
 
   return (
-    <motion.button
+    <motion.div
       ref={ref}
       variants={tileVariants}
       initial="start"
@@ -50,33 +50,42 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
       }
       onMouseEnter={(e) => {
         tileControls.start("hover");
-        gsap.to(document.querySelector("#" + id + "hero"), {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-        gsap.to(document.querySelector("#mainHero"), {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        document.querySelector("#" + id + "hero").style.display = "block";
+        setTimeout(() => {
+          gsap.to(document.querySelector("#" + id + "hero"), {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+          gsap.to(document.querySelector("#mainHero"), {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        }, 100);
       }}
       onMouseLeave={() => {
         tileControls.start("hoverEnd");
+
+        setTimeout(() => {
+          document.querySelector("#" + id + "hero").style.display = "none";
+        }, 300);
         gsap.to(document.querySelector("#" + id + "hero"), {
           opacity: 0,
           duration: 0.3,
           ease: "power2.out",
         });
-        gsap.to(document.querySelector("#mainHero"), {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        setTimeout(() => {
+          gsap.to(document.querySelector("#mainHero"), {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        }, 100);
       }}
     >
       {children}
-    </motion.button>
+    </motion.div>
   );
 };
 
@@ -93,8 +102,8 @@ const tiles = defaultItems.map((value, i) => {
         transition: {
           type: "srping",
           scale: {
-            duration: 0.75,
-            delay: i + 1.5,
+            duration: Math.random() * i,
+            delay: Math.random() * i,
           },
         },
       }}
@@ -107,14 +116,15 @@ const tiles = defaultItems.map((value, i) => {
 export default function Tiles() {
   return (
     <>
-      <div className="container">
+      <div className="container container__features">
+        <div
+          style={{ width: defaultItems.length * 150 + "px" }}
+          className="horizontal__features"
+        >
+          {tiles}
+        </div>
         <div className="feature-grid-container grid grid--columns">
-          <motion.div
-            className="grid feature-grid"
-            variants={{ animate: { transition: { staggerChildren: 0.5 } } }}
-          >
-            {tiles}
-          </motion.div>
+          <motion.div className="grid feature-grid">{tiles}</motion.div>
         </div>
       </div>
     </>
