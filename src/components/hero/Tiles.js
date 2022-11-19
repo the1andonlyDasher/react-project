@@ -5,7 +5,6 @@ import { icons } from "./icons";
 import { mainTexts } from "./mainTexts";
 import { useEffect } from "react";
 import gsap from "gsap";
-import "../../js/checkAnim";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const bg = require("../../images/bg.png");
 
@@ -27,7 +26,7 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
     setTimeout(() => {
       tileControls.start("entered");
     }, 1500);
-    if (inView && window.completedAnimation.status) {
+    if (inView) {
       tileControls.start("entered");
     }
 

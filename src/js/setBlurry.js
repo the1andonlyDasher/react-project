@@ -1,3 +1,0 @@
-window.setBlurry = {
-  is: false,
-};

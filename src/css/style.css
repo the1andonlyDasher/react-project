@@ -928,15 +928,29 @@ a {
   height: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  padding: 150px 15% 1rem 15%;
+  padding: 150px 1.5rem 1rem 1.5rem;
   width: 100%;
   flex-direction: column;
   position: relative;
 }
+@media screen and (min-width: 500px) {
+  .main section {
+    padding: 150px 2.5rem 1rem 2.5rem;
+  }
+}
 @media screen and (min-width: 880px) {
   .main section {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding: 150px 5% 1rem 5%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .main section {
+    padding: 150px 10% 1rem 10%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .main section {
+    padding: 150px 15% 1rem 15%;
   }
 }
 .main section .__s__b {

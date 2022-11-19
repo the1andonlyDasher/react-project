@@ -6,7 +6,6 @@ import { Footer } from "../components/footer/Footer";
 import { motion } from "framer-motion";
 import ContactForm from "../components/contact/ContactForm";
 import Scrollbar from "../components/scrollbar";
-import useDOMChange from "../js/pageState";
 import Navbar from "../components/navbar";
 
 export default function Home_page() {

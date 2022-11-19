@@ -1,7 +1,7 @@
 import React, { useRef, Suspense, useMemo, useState } from "react";
 import { Canvas, useThree, extend } from "@react-three/fiber";
 import { LinearMipmapLinearFilter, RepeatWrapping, Vector3 } from "three";
-import { useScroll } from "framer-motion";
+import "./image";
 import {
   Glitch,
   Noise,
@@ -13,65 +13,10 @@ import { GlitchPass } from "./glitchPass";
 import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
 import { useBreakpoints, useCurrentWidth } from "react-breakpoints-hook";
 import { Html, useProgress, useTexture, useIntersect } from "@react-three/drei";
-import "./image";
-import useDOMChange from "./pageState";
-import "./hoverImg";
 
-const bg = [
-  require("../images/bg3.png"),
-  require("../images/bg3.png"),
-  require("../images/bg3.png"),
-  require("../images/bg3.png"),
-];
+const bg = require("../images/bg3.png");
 
 extend({ GlitchPass, FilmPass });
-
-const Button = ({ image }) => {
-  const texture = useTexture(image.props.src);
-  const visible = useRef(false);
-  const [hovered, hover] = useState(false);
-  const ref = useIntersect((isVisible) => (visible.current = isVisible));
-
-  const { viewport } = useThree();
-
-  const { width, height, top, left } = image.props.getBoundingClientRect();
-
-  const scroll = useScroll();
-
-  //useFrame(() => ref.current.update);
-
-  useMemo(() => {
-    texture.generateMipmaps = false;
-    texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.minFilter = LinearMipmapLinearFilter;
-    texture.needsUpdate = true;
-  }, [
-    texture.generateMipmaps,
-    texture.wrapS,
-    texture.wrapT,
-    texture.minFilter,
-    texture.needsUpdate,
-  ]);
-
-  const scaleX = (width / window.innerWidth) * viewport.width;
-  const scaleY = (height / window.innerHeight) * viewport.height;
-  const posX =
-    ((width / window.innerWidth) * viewport.width) / 2 -
-    viewport.width / 2 +
-    (left / window.innerWidth) * viewport.width;
-  const posY =
-    0 -
-    ((height / window.innerHeight) * viewport.height) / 2 +
-    viewport.height / 2 -
-    (top / window.innerHeight) * viewport.height;
-
-  return (
-    <mesh ref={ref} scale={[scaleX, scaleY, 1]} position={[posX, posY, 0]}>
-      <planeGeometry attach="geometry" />
-      <button attach="material" texture={texture} />
-    </mesh>
-  );
-};
 
 function Plane(props) {
   const texture = useTexture(props.img);
@@ -253,7 +198,7 @@ export default function GL(props) {
           <Suspense fallback={<Loader />}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Plane img={bg[`${window.hoverItem.hoverImg}`]} />
+            <Plane img={bg} />
             {/* {state.map((image, i) => (
               <Button key={image.props.src + i} image={image} />
             ))} */}

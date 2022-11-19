@@ -725,13 +725,21 @@ a {
   height: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  padding: 150px 15% 1rem 15%;
+  padding: 150px 1.5rem 1rem 1.5rem;
   width: 100%;
   flex-direction: column;
   position: relative;
+  @include mq(small) {
+    padding: 150px 2.5rem 1rem 2.5rem;
+  }
   @include mq(medium) {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding: 150px 5% 1rem 5%;
+  }
+  @include mq(large) {
+    padding: 150px 10% 1rem 10%;
+  }
+  @include mq(xl) {
+    padding: 150px 15% 1rem 15%;
   }
   .__s__b {
     @extend %flex-center;

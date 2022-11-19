@@ -1,7 +1,6 @@
 //  src/components/home.js
 import React from "react";
-import { WebGLButton } from "../../js/context";
-import button, { Button } from "../../components/button";
+import { Button } from "../../components/button";
 import { motion } from "framer-motion";
 import { TileHeros } from "./TileHeros";
 const img = require("../../images/button.webp");

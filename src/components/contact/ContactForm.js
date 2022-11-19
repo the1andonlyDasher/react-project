@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { WebGLButton } from "../../js/context";
 import { Button } from "../button";
 const img = require("../../images/button.webp");
 

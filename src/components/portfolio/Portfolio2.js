@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import "../../js/hoverImg.js";
 const image1 = require("../../images/page1.webp");
 const image2 = require("../../images/page2.webp");
 const image3 = require("../../images/page3.webp");
@@ -16,27 +15,6 @@ let canvas;
 export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
   const ref = useRef([]);
   const pushRef = (el) => ref.current.push(el);
-  const [show, isShown] = useState(false);
-  const [dull, isDull] = useState(false);
-  window.hoverItem.hovering = show;
-  useEffect(() => {
-    canvas = document.getElementById("canvasWrapper");
-    return;
-  }, []);
-
-  function changeOpacity() {
-    dull
-      ? gsap.to(canvas.style, {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        })
-      : gsap.to(canvas.style, {
-          opacity: 0.2,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-  }
 
   return (
     <>
@@ -68,22 +46,7 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
             //onSlideChange={() => console.log("slide change")}
           >
             <SwiperSlide>
-              <div
-                ref={pushRef}
-                onMouseEnter={() => {
-                  isShown(true);
-                  isDull(true);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 1;
-                }}
-                onMouseLeave={() => {
-                  isShown(false);
-                  isDull(false);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 0;
-                }}
-                className="inner"
-              >
+              <div ref={pushRef} className="inner">
                 <Button
                   target="_blank"
                   gl={false}
@@ -102,22 +65,7 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
               ></div>
             </SwiperSlide>
             <SwiperSlide>
-              <div
-                ref={pushRef}
-                onMouseEnter={() => {
-                  isShown(true);
-                  isDull(true);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 2;
-                }}
-                onMouseLeave={() => {
-                  isShown(false);
-                  isDull(false);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 0;
-                }}
-                className="inner"
-              >
+              <div ref={pushRef} className="inner">
                 <Button
                   gl={false}
                   to="\\www.kammermieten.de"
@@ -136,22 +84,7 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
               ></div>
             </SwiperSlide>
             <SwiperSlide>
-              <div
-                ref={pushRef}
-                onMouseEnter={() => {
-                  isShown(true);
-                  isDull(true);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 3;
-                }}
-                onMouseLeave={() => {
-                  isShown(false);
-                  isDull(false);
-                  changeOpacity();
-                  window.hoverItem.hoverImg = 0;
-                }}
-                className="inner"
-              >
+              <div ref={pushRef} className="inner">
                 <Button
                   gl={false}
                   to="\\www.cr-jobtraining.de"
