@@ -2,7 +2,7 @@ import React from "react";
 import { motion, useCycle } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const BaseCover = ({ title, subtitle, backgroundImage }) => {
+export const BaseCover = ({ title, subtitle, backgroundImage, fa }) => {
   const [animate, cycle] = useCycle(
     {
       filter: [
@@ -27,6 +27,7 @@ export const BaseCover = ({ title, subtitle, backgroundImage }) => {
         "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
         "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
       ],
+      zIndex: 0,
     },
     {
       filter: [
@@ -51,6 +52,7 @@ export const BaseCover = ({ title, subtitle, backgroundImage }) => {
         "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
         "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
       ],
+      zIndex: -1,
     }
   );
   const variants = {
@@ -79,10 +81,16 @@ export const BaseCover = ({ title, subtitle, backgroundImage }) => {
             duration: (Math.random() + 0.1) * 0.5,
           }}
         >
-          <div
-            className="base__icon-bg"
-            style={{ backgroundImage: `url(${backgroundImage})` }}
-          ></div>
+          {fa ? (
+            <div className="base__icon-bg">
+              <FontAwesomeIcon icon={backgroundImage} />
+            </div>
+          ) : (
+            <div
+              className="base__icon-bg"
+              style={{ backgroundImage: `url(${backgroundImage})` }}
+            ></div>
+          )}
 
           <h4>{title}</h4>
           <h5>{subtitle}</h5>

@@ -4,7 +4,15 @@ import { BaseCover } from "./BaseCover";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-export const BaseItem = ({ title, subtitle, backgroundImage, icon, text }) => {
+export const BaseItem = ({
+  title,
+  subtitle,
+  backgroundImage,
+  icon,
+  text,
+  fa,
+  lastItem,
+}) => {
   const variants = {
     start: {
       opacity: 0,
@@ -87,9 +95,17 @@ export const BaseItem = ({ title, subtitle, backgroundImage, icon, text }) => {
       }}
       className="base__item"
     >
-      <BaseContent title={title} subtitle={subtitle} icon={icon} text={text} />
+      <BaseContent
+        title={title}
+        subtitle={subtitle}
+        icon={icon}
+        text={text}
+        fa={fa}
+        lastItem={lastItem}
+      />
       <BaseCover
         title={title}
+        fa={fa}
         subtitle={subtitle}
         backgroundImage={backgroundImage}
       />

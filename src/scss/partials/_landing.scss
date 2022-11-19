@@ -419,3 +419,22 @@
     display: none;
   }
 }
+
+.h__scroller__wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.p__bar {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 5px;
+  background-color: var(--clr-primary-100);
+  transform-origin: left center 0px;
+  @include mq(medium) {
+    display: none;
+  }
+}

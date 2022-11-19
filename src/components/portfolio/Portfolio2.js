@@ -54,10 +54,10 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
               1200: {
                 slidesPerView: 3,
               },
-              640: {
+              900: {
                 slidesPerView: 2,
               },
-              480: {
+              700: {
                 slidesPerView: 1,
               },
             }}
@@ -85,9 +85,9 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
                 className="inner"
               >
                 <Button
+                  target="_blank"
                   gl={false}
                   to="\\www.h-c-gebaeudereinigung.de"
-                  target="_blank"
                   type="button"
                   buttonSize={"btn__medium"}
                   buttonStyle={"btn__outline"}

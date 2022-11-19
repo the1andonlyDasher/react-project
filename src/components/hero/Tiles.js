@@ -1,5 +1,5 @@
-import React from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useAnimation, useScroll, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { icons } from "./icons";
 import { mainTexts } from "./mainTexts";
@@ -114,15 +114,27 @@ const tiles = defaultItems.map((value, i) => {
 });
 
 export default function Tiles() {
+  const ref = useRef();
+  const { scrollXProgress } = useScroll({ container: ref });
+  const scaleX = useSpring(scrollXProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
   return (
     <>
-      <div className="container container__features">
-        <div
-          style={{ width: defaultItems.length * 150 + "px" }}
-          className="horizontal__features"
-        >
-          {tiles}
+      <div className="h__scroller__wrapper">
+        <motion.div className="p__bar" style={{ scaleX }} />
+        <div ref={ref} className="container container__features">
+          <div
+            style={{ width: defaultItems.length * 150 + "px" }}
+            className="horizontal__features"
+          >
+            {tiles}
+          </div>
         </div>
+      </div>
+      <div className="container">
         <div className="feature-grid-container grid grid--columns">
           <motion.div className="grid feature-grid">{tiles}</motion.div>
         </div>

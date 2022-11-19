@@ -108,7 +108,13 @@ export default function Hero() {
             </h1>
           </div>
           {/* <WebGLButton src={img} text="Los geht's!" /> */}
-          <Button gl={true} to="/" inner={true}>
+          <Button
+            hash={true}
+            type="button"
+            gl={true}
+            to="#contact"
+            inner={true}
+          >
             Los geht's!
           </Button>
         </motion.div>

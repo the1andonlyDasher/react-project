@@ -22,10 +22,8 @@ export default function App() {
   return (
     <>
       <Router>
-        <WebGLProvider>
-          <GL />
-          <AnimatedRoutes />
-        </WebGLProvider>
+        <GL />
+        <AnimatedRoutes />
       </Router>
       <Loader hideLoader={hideLoader} showLoader={showLoader}></Loader>
     </>

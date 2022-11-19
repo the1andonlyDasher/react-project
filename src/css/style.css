@@ -466,6 +466,7 @@ html {
   position: initial;
   width: 100%;
   max-width: 100%;
+  scroll-behavior: smooth;
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden;
@@ -2581,7 +2582,7 @@ div[data-scroll-content] .frame:first-child header {
   display: none;
 }
 
-.bar1_clicked, .white, #burgermenu > div > div, #burgermenu > div, #burgermenu {
+.bar1_clicked, .white {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -2620,19 +2621,17 @@ div[data-scroll-content] .frame:first-child header {
   justify-content: space-evenly;
   flex-direction: column;
   position: absolute;
-}
-#burgermenu > div > div {
-  width: 100%;
   height: 3px;
-  background-color: #fff;
-  border-radius: 2px;
-  animation: empty 0s;
-  animation-play-state: paused;
+  border-radius: 1px;
+  top: 50%;
+  width: 100%;
+  background-color: var(--clr-primary-100);
+  transform-origin: center;
+  transform: translate(0, 0) rotate(0deg);
 }
 @media screen and (min-width: 880px) {
   #burgermenu {
     display: none;
-    right: 15%;
   }
 }
 
@@ -3422,6 +3421,27 @@ div[data-scroll-content] .frame:first-child header {
   display: none;
 }
 
+.h__scroller__wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.p__bar {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 5px;
+  background-color: var(--clr-primary-100);
+  transform-origin: left center 0px;
+}
+@media screen and (min-width: 880px) {
+  .p__bar {
+    display: none;
+  }
+}
+
 .nav-items-mobile, .navbar__container, .navbar #image-wrapper-blue, .navbar #image-wrapper-white {
   display: flex;
   justify-content: center;
@@ -4065,13 +4085,13 @@ form .btn-group .btn-group:nth-child(n+2) {
   height: 100%;
 }
 
-.base__content p, .base__icon, .base__content span, .base__cover :is(h4, h5), .base__cover {
+.base__content p, .base__icon, .base__content .last span, .base__content span, .base__icon-bg, .base__cover :is(h4, h5), .base__content span a, .base__cover {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.no__bg, .fade-out, .fade-in, p.fade-in, .base__content p, .base__content .panel, .base__content span svg, .base__cover svg, .base__content span, .base__content .h5__read, .base__icon-bg, .base__cover :is(h4, h5), .img__read, .base__content .bg-img, .base__content h5 {
+.no__bg, .fade-out, .fade-in, p.fade-in, .base__content p, .base__content .panel, .base__content span svg, .base__cover svg, .base__content .last span, .base__content span, .base__content .h5__read, .base__icon-bg, .base__cover :is(h4, h5), .img__read, .base__content .bg-img, .base__content h5 {
   transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -4107,7 +4127,7 @@ form .btn-group .btn-group:nth-child(n+2) {
 @media screen and (min-width: 1600px) {
   .base__list {
     --columns: 4;
-    --mwidth: 300px;
+    --mwidth: 260px;
     grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   }
 }
@@ -4181,6 +4201,22 @@ form .btn-group .btn-group:nth-child(n+2) {
   .base__content .header__wrapper {
     margin: 0;
     padding: 0;
+  }
+}
+
+.base__content span a {
+  color: var(--clr-contrast-100);
+  width: 100%;
+  height: 100%;
+}
+@media screen and (min-width: 880px) {
+  .base__content span a {
+    background-color: var(--clr-contrast-800);
+    font-family: "Fira-Sans", sans-serif;
+    font-weight: 900;
+    font-size: var(--fs-sub-small);
+    padding: 2rem;
+    text-align: center;
   }
 }
 
@@ -4269,6 +4305,11 @@ form .btn-group .btn-group:nth-child(n+2) {
     opacity: 0.1;
   }
 }
+.base__icon-bg .svg-inline--fa {
+  margin: auto;
+  width: 100%;
+  height: 50%;
+}
 
 .base__content .h5__read {
   padding-bottom: 1rem;
@@ -4301,6 +4342,22 @@ form .btn-group .btn-group:nth-child(n+2) {
   cursor: pointer;
 }
 
+.base__content .last span {
+  background-color: var(--clr-contrast-600);
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  grid-area: switch;
+}
+@media screen and (min-width: 880px) {
+  .base__content .last span {
+    display: flex;
+  }
+}
+
 .base__content span svg {
   transform: rotate(0deg);
 }
@@ -4316,6 +4373,10 @@ form .btn-group .btn-group:nth-child(n+2) {
   .base__icon {
     display: none;
   }
+}
+.base__icon .svg-inline--fa {
+  width: 40%;
+  height: 100%;
 }
 
 .close__toggle {

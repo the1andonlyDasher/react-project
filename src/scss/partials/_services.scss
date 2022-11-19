@@ -63,12 +63,9 @@
   }
   @include mq(xl) {
     --columns: 4;
-    --mwidth: 300px;
+    --mwidth: 260px;
 
-    grid-template-columns: repeat(
-    auto-fit,
-    minmax(auto, 1fr)
-  );
+    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   }
 }
 
@@ -149,6 +146,21 @@
   }
 }
 
+.base__content span a {
+  @extend %flex-center;
+  color: var(--clr-contrast-100);
+  width: 100%;
+  height: 100%;
+  @include mq(medium) {
+    background-color: var(--clr-contrast-800);
+    font-family: "Fira-Sans", sans-serif;
+    font-weight: 900;
+    font-size: var(--fs-sub-small);
+    padding: 2rem;
+    text-align: center;
+  }
+}
+
 .base__content h4 {
   margin: 0;
   color: var(--clr-primary-200);
@@ -214,7 +226,7 @@
 }
 
 .base__icon-bg {
-  @extend %trans;
+  @extend %trans, %flex-center;
   // background-image: url("/fileadmin/user_upload/Gruppe_6.svg");
   position: absolute;
   top: 0;
@@ -228,6 +240,11 @@
   opacity: 0;
   @include mq(medium) {
     opacity: 0.1;
+  }
+  .svg-inline--fa {
+    margin: auto;
+    width: 100%;
+    height: 50%;
   }
 }
 
@@ -262,6 +279,21 @@
   cursor: pointer;
 }
 
+.base__content .last span {
+  @extend %flex-center, %trans;
+  background-color: var(--clr-contrast-600);
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  grid-area: switch;
+  @include mq(medium) {
+    display: flex;
+  }
+}
+
 .base__cover svg {
   @extend %trans;
 }
@@ -280,6 +312,10 @@
   height: clamp(4rem, calc(1vw + 5rem), 6rem);
   @include mq(medium) {
     display: none;
+  }
+  .svg-inline--fa {
+    width: 40%;
+    height: 100%;
   }
 }
 

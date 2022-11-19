@@ -5,6 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion, useCycle } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 const logo = require("../images/logo.webp");
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -107,11 +109,6 @@ export default function Navbar({ main }) {
       },
     }
   );
-  const variants_list = {
-    start: { opacity: 0 },
-    entered: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
   const listItem = {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
@@ -132,12 +129,49 @@ export default function Navbar({ main }) {
     }
   };
 
+  const [cycle_closed, cycleClosed] = useCycle(
+    {
+      transform: [
+        "translate(0, 0px) rotate(255deg)",
+        "translate(0, 0px) rotate(0deg)",
+        "translate(0, -5px) rotate(0deg)",
+      ],
+    },
+    {
+      transform: [
+        "translate(0, -5px) rotate(0deg)",
+        "translate(0, 0) rotate(0deg)",
+        "translate(0, 0) rotate(225deg)",
+      ],
+    }
+  );
+  const [cycle_open, cycleOpen] = useCycle(
+    {
+      transform: [
+        "translate(0px, 0px) rotate(-225deg)",
+        "translate(0px, 0px) rotate(0deg)",
+        "translate(0px, 5px) rotate(0deg",
+      ],
+    },
+    {
+      transform: [
+        "translate(0px, 5px) rotate(0deg)",
+        "translate(0px, 0px) rotate(0deg)",
+        "translate(0px, 0px) rotate(-225deg)",
+      ],
+    }
+  );
+
   const handleClick = () => {
     setClick(!click);
+    cycleClosed();
+    cycleOpen();
     sequence();
   };
 
   const closeMobileMenu = (e) => {
+    cycleClosed();
+    cycleOpen();
     sequence();
 
     const attribute = e.currentTarget.getAttribute("href");
@@ -212,14 +246,22 @@ export default function Navbar({ main }) {
             <img src={logo} alt="" />
           </NavLink>
           <div id="burgermenu" onClick={handleClick}>
-            <div className="opened">
-              <div></div>
-              <div></div>
-            </div>
-            <div className="closed">
-              <div></div>
-              <div></div>
-            </div>
+            <motion.div
+              animate={cycle_closed}
+              transition={{
+                type: "tween",
+                duration: 0.5,
+                ease: "easeIn",
+              }}
+            ></motion.div>
+            <motion.div
+              animate={cycle_open}
+              transition={{
+                type: "tween",
+                duration: 0.5,
+                ease: "easeIn",
+              }}
+            ></motion.div>
           </div>
           {main ? (
             <ul className="nav-items-desktop">
@@ -260,7 +302,7 @@ export default function Navbar({ main }) {
           )}
           {main ? (
             <motion.ul
-              variants={variants_list}
+              variants={variants}
               initial="start"
               animate={animate}
               transition={{
@@ -290,7 +332,7 @@ export default function Navbar({ main }) {
             </motion.ul>
           ) : (
             <motion.ul
-              variants={variants_list}
+              variants={variants}
               initial="start"
               animate={animate}
               transition={{
