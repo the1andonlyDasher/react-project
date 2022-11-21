@@ -4,18 +4,12 @@ import { BaseItem } from "./baseItem/BaseItem";
 import { web } from "../../texts/web";
 import { brand } from "../../texts/brand";
 import { print } from "../../texts/print";
-import g7 from "../../images/Gruppe_7.svg";
 import g1 from "../../images/Gruppe_1.svg";
 import g3 from "../../images/Gruppe_3.svg";
 import g6 from "../../images/Gruppe_6.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAllergies,
-  faAngleRight,
-  faHandshake,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHandshake } from "@fortawesome/free-solid-svg-icons";
 
-export const Services = ({ title, subtitle, sectionName, id }) => {
+const Services = ({ title, subtitle, sectionName, id }) => {
   return (
     <>
       <section data-section-name={sectionName} id={id}>
@@ -67,3 +61,5 @@ export const Services = ({ title, subtitle, sectionName, id }) => {
     </>
   );
 };
+
+export default Services;

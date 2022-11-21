@@ -4,7 +4,6 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 export const BaseContent = ({ title, subtitle, icon, text, fa, lastItem }) => {
   const item = useRef();
   const panel = useRef();
-  function goDown() {}
   function handleClick() {
     var sH = panel.current.scrollHeight;
     if (panel.current.style.maxHeight) {
@@ -61,7 +60,7 @@ export const BaseContent = ({ title, subtitle, icon, text, fa, lastItem }) => {
         </div>
         {lastItem ? (
           <span>
-            <a href="#contact">
+            <a aria-label="Kontakt" href="#contact">
               <FontAwesomeIcon icon={faChevronDown} />
             </a>
           </span>

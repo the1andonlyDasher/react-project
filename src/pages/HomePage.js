@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { HeroWrapper } from "../components/hero/HeroWrapper";
-import { Services } from "../components/services/Services";
-import { Portfolio2 } from "../components/portfolio/Portfolio2";
-import { Footer } from "../components/footer/Footer";
+import React, { useState, lazy } from "react";
 import { motion } from "framer-motion";
-import ContactForm from "../components/contact/ContactForm";
+// import ContactForm from "../components/contact/ContactForm";
 import Scrollbar from "../components/scrollbar";
 import Navbar from "../components/navbar";
+
+const ContactForm = lazy(() => import("../components/contact/ContactForm"));
+const HeroWrapper = lazy(() => import("../components/hero/HeroWrapper"));
+const Services = lazy(() => import("../components/services/Services"));
+const Portfolio2 = lazy(() => import("../components/portfolio/Portfolio2"));
+const Footer = lazy(() => import("../components/footer/Footer"));
 
 export default function Home_page() {
   const variants = {

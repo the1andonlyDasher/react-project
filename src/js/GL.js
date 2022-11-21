@@ -1,5 +1,6 @@
-import React, { useRef, Suspense, useMemo, useState } from "react";
+import React, { useRef, Suspense, useMemo, useEffect } from "react";
 import { Canvas, useThree, extend } from "@react-three/fiber";
+import { useCycle, motion } from "framer-motion";
 import { LinearMipmapLinearFilter, RepeatWrapping, Vector3 } from "three";
 import "./image";
 import {
@@ -14,7 +15,7 @@ import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
 import { useBreakpoints, useCurrentWidth } from "react-breakpoints-hook";
 import { Html, useProgress, useTexture, useIntersect } from "@react-three/drei";
 
-const bg = require("../images/bg3.png");
+const bg = require("../images/bg2.webp");
 
 extend({ GlitchPass, FilmPass });
 
@@ -70,11 +71,23 @@ function Plane(props) {
     </mesh>
   );
 }
+const Loader = () => {
+  const ref = useRef();
+  const [animate, cycle] = useCycle(
+    {
+      opacity: 1,
+    },
+    { opacity: 0 }
+  );
+  useEffect(() => {
+    cycle();
+    return;
+  }, []);
 
-function Loader() {
-  const { progress } = useProgress();
-  return <Html center>{progress} % loaded</Html>;
-}
+  return (
+    <motion.div animate={animate} ref={ref} className="loader"></motion.div>
+  );
+};
 
 export default function GL(props) {
   const windowRef = useRef(null);
@@ -186,41 +199,42 @@ export default function GL(props) {
         // }}
         ref={windowRef}
       >
-        <Canvas
-          orthographic={true}
-          gl={{
-            alpha: false,
-            antialias: false,
-            stencil: false,
-            depth: false,
-          }}
-        >
-          <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
+          <Canvas
+            orthographic={true}
+            gl={{
+              alpha: false,
+              antialias: false,
+              stencil: false,
+              depth: false,
+            }}
+          >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <Plane img={bg} />
             {/* {state.map((image, i) => (
               <Button key={image.props.src + i} image={image} />
             ))} */}
-          </Suspense>
-          <EffectComposer>
-            <Glitch
-              active={true}
-              ratio={0.15}
-              strength={[0.002, 0.005]}
-              mode={GlitchMode.SPORADIC}
-              delay={Math.random() * 2 + 1}
-              duration={[0.1, 0.25]}
-              dtSize={64}
-            />
-            <Scanline
-              blendFunction={BlendFunction.OVERLAY}
-              density={width > 850 ? 1.25 : 0.55}
-              opacity={0.05}
-            />
-            <Noise opacity={0.02} />
-          </EffectComposer>
-        </Canvas>
+
+            <EffectComposer>
+              <Glitch
+                active={true}
+                ratio={0.15}
+                strength={[0.002, 0.005]}
+                mode={GlitchMode.SPORADIC}
+                delay={Math.random() * 2 + 1}
+                duration={[0.1, 0.25]}
+                dtSize={64}
+              />
+              <Scanline
+                blendFunction={BlendFunction.OVERLAY}
+                density={width > 850 ? 1.25 : 0.55}
+                opacity={0.05}
+              />
+              <Noise opacity={0.02} />
+            </EffectComposer>
+          </Canvas>
+        </Suspense>
       </div>
     </>
   );

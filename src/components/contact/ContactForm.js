@@ -1,9 +1,26 @@
 import React, { useRef, useState } from "react";
+import { useAnimationControls, motion, sequence } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { Button } from "../button";
+import { Button } from "../button_noLink";
 const img = require("../../images/button.webp");
 
 const ContactForm = ({ title, subtitle, sectionName, id }) => {
+  const controlsForm = useAnimationControls();
+  const messageControls = useAnimationControls();
+  const formVariants = {
+    initial: { opacity: 1 },
+    animate: { opacity: 0 },
+    exit: { opacity: 0 },
+  };
+  const messageVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, display: "flex" },
+    exit: { opacity: 0 },
+  };
+  const sequence = async () => {
+    await controlsForm.start("animate");
+    return await messageControls.start("animate");
+  };
   const form = useRef();
   const [status, setStatus] = useState("Abschicken");
   const sendEmail = (e) => {
@@ -22,11 +39,11 @@ const ContactForm = ({ title, subtitle, sectionName, id }) => {
           setTimeout(() => {
             setStatus("Abschicken");
           }, 2000);
-          alert("message sent succesfully");
+          sequence();
         },
         (error) => {
           setStatus("Ups...");
-          alert("failed to send message");
+          alert("Konnte Nachricht nicht versenden...");
         }
       );
   };
@@ -35,13 +52,30 @@ const ContactForm = ({ title, subtitle, sectionName, id }) => {
       <div className="__s__b">
         <h2 data-before={title}>{title}</h2>
         <h3>{subtitle}</h3>
-        <form ref={form} onSubmit={sendEmail}>
+        <motion.div
+          className="thanks__message"
+          variants={messageVariants}
+          initial="initial"
+          animate={messageControls}
+          exit="exit"
+        >
+          <h4>Vielen Dank!</h4>
+          <h3>Wir werden Ihre Anfrage bearbeiten und Sie kontaktieren.</h3>
+        </motion.div>
+        <motion.form
+          ref={form}
+          onSubmit={sendEmail}
+          variants={formVariants}
+          initial="initial"
+          animate={controlsForm}
+          exit="exit"
+        >
           <div>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" required />
           </div>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">E-Mail:</label>
             <input
               type="email"
               id="email"
@@ -50,14 +84,14 @@ const ContactForm = ({ title, subtitle, sectionName, id }) => {
             />
           </div>
           <div>
-            <label htmlFor="message">Message:</label>
+            <label htmlFor="message">Nachricht:</label>
             <textarea id="message" required rows="5" />
           </div>
           {/* <WebGLButton type={"submit"} src={img} text="Los geht's!" /> */}
-          <Button type="submit" gl={true} to="/" inner={true}>
+          <Button noLink={true} type="submit" gl={true} to="/" inner={true}>
             {status}
           </Button>
-        </form>
+        </motion.form>
       </div>
     </section>
   );

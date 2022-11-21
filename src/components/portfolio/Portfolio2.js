@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "../button";
-import gsap from "gsap";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,7 +11,27 @@ const image2 = require("../../images/page2.webp");
 const image3 = require("../../images/page3.webp");
 let canvas;
 
-export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
+const useProgressiveImage = (src) => {
+  const [sourceLoaded, setSourceLoaded] = useState(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setSourceLoaded(src);
+  }, [src]);
+
+  return sourceLoaded;
+};
+
+const Portfolio2 = ({
+  title,
+  subtitle,
+  sectionName,
+  id,
+  source,
+  placeholder,
+}) => {
+  const loaded = useProgressiveImage(source);
   const ref = useRef([]);
   const pushRef = (el) => ref.current.push(el);
 
@@ -42,6 +61,8 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
+            preloadImages={true}
+            rewind={true}
             //onSwiper={(swiper) => console.log(swiper)}
             //onSlideChange={() => console.log("slide change")}
           >
@@ -108,3 +129,5 @@ export const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
     </>
   );
 };
+
+export default Portfolio2;

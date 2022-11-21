@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BaseContent } from "./BaseContent";
 import { BaseCover } from "./BaseCover";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 export const BaseItem = ({
   title,
@@ -72,7 +71,8 @@ export const BaseItem = ({
   };
 
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true });
+  const ref = useRef();
+  const inView = useInView(ref, { once: true, margin: "0px" });
   useEffect(() => {
     if (inView) {
       controls.start("entered");

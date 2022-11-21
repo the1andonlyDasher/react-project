@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
-import { motion, useAnimation, useScroll, useSpring } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {
+  motion,
+  useAnimation,
+  useScroll,
+  useSpring,
+  useInView,
+} from "framer-motion";
 import { icons } from "./icons";
 import { mainTexts } from "./mainTexts";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const bg = require("../../images/bg.png");
 
 const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
   const tileVariants = {
@@ -20,7 +24,8 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
     hoverEnd: { scale: 1, zIndex: 1 },
   };
   const tileControls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0 });
+  const ref = useRef();
+  const inView = useInView(ref, { once: true });
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,13 +48,12 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
       maintext={mainText}
       fallbacksrc={fallbacksrc}
       id={id}
-      style={{ backgroundImage: `url(${bg})` }}
       onError={(e) =>
         e.currentTarget.style.backgroundImage(`url(${fallbacksrc})`)
       }
       onMouseEnter={(e) => {
         tileControls.start("hover");
-        document.querySelector("#" + id + "hero").style.display = "block";
+        document.querySelector("#" + id + "hero").style.display = "flex";
         setTimeout(() => {
           gsap.to(document.querySelector("#" + id + "hero"), {
             opacity: 1,

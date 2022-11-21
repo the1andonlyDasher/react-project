@@ -40,9 +40,6 @@ export default function DataPage() {
         animate="enter"
         exit="exit"
         transition={{ type: "tween", duration: 1 }}
-        onChange={() => {
-          console.log("animation started");
-        }}
         className="main"
       >
         <Scrollbar stiffness={50} restdelta={0.001} damping={20} />

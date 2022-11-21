@@ -43,12 +43,12 @@
 }
 
 .cookie-consent-container .consent-modal {
-  background-image: linear-gradient(
+  background-image: -webkit-linear-gradient(
     30deg,
     var(--clr-primary-300),
     var(--clr-primary-400)
   );
-  background-image: -webkit-linear-gradient(
+  background-image: linear-gradient(
     30deg,
     var(--clr-primary-300),
     var(--clr-primary-400)

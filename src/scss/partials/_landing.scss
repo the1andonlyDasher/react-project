@@ -61,7 +61,7 @@
 
 #right-wrapper {
   @extend %flex-center;
-  min-height: calc(30vh + 10em);
+  // min-height: calc(30vh + 10em);
 }
 
 .nav__tiles {
@@ -153,6 +153,11 @@
   @extend %absolute-full;
   position: absolute;
   opacity: 0;
+  opacity: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-bottom: 20%;
 }
 
 .flex {
@@ -212,7 +217,7 @@
   transition: transform 350ms ease-in-out;
   overflow: hidden;
   opacity: 1;
-  background-color: #171717;
+  background-color: var(--clr-contrast-750);
   border: none;
   will-change: transform;
   &:hover svg {
@@ -424,6 +429,7 @@
   width: 100%;
   height: auto;
   position: relative;
+  margin: 2rem auto auto auto;
 }
 
 .p__bar {

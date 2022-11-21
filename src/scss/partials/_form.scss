@@ -244,3 +244,17 @@ form .btn-group .btn-group:nth-child(n + 2) {
 #fp_form-54 .form-actions button {
   width: 50%;
 }
+
+.thanks__message {
+  @extend %flex-center;
+  min-height: 300px;
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  font-size: var(--fs-sub-big);
+  font-family: "Fira Sans", sans-serif;
+  h3 {
+    font-size: var(--fs-text);
+  }
+}

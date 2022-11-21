@@ -82,18 +82,25 @@ export default function Hero() {
       ],
     },
   };
+  const variants_tame = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
   return (
     <>
       <div className="container">
         <TileHeros />
         <motion.div
-          variants={variants}
+          layout
+          variants={variants_tame}
           initial="initial"
           animate="animate"
           exit="exit"
           transition={{
             type: "spring",
             velocity: "10",
+            damping: 10,
             stiffness: 1000,
             restSpeed: 0.5,
             duration: 1,

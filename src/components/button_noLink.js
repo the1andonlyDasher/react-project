@@ -7,7 +7,6 @@ const SIZES = ["btn__medium", "btn__large"];
 
 export const Button = ({
   gl,
-  to,
   children,
   type,
   onClick,
@@ -15,10 +14,6 @@ export const Button = ({
   buttonSize,
   inner,
   dl,
-  target,
-  hash,
-  label,
-  alt,
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -201,95 +196,41 @@ export const Button = ({
   );
   return (
     <>
-      {hash ? (
-        <a
-          href={to}
-          target={target}
-          alt={alt}
-          lable={label}
-          className="btn-mobile"
-        >
-          <motion.button
-            animate={inner ? animate : undefined}
-            onHoverStart={() => {
-              controlsInner.start("animate");
-              cycle();
-            }}
-            onHoverEnd={() => {
-              cycle();
-              controlsInner.start("initial");
-            }}
-            transition={{
-              type: "tween",
-              duration: 0.5,
-            }}
-            data-link-text={dl}
-            className={`${
-              gl ? "btn" : "no-btn"
-            } ${checkButtonStyle} ${checkButtonSize}`}
-            onClick={onClick}
-            type={type}
+      <motion.button
+        animate={inner ? animate : undefined}
+        onHoverStart={() => {
+          controlsInner.start("animate");
+          cycle();
+        }}
+        onHoverEnd={() => {
+          cycle();
+          controlsInner.start("initial");
+        }}
+        transition={{
+          type: "tween",
+          duration: 0.5,
+        }}
+        data-link-text={dl}
+        className={`${
+          gl ? "btn" : "no-btn"
+        } ${checkButtonStyle} ${checkButtonSize}`}
+        onClick={onClick}
+        type={type}
+      >
+        {children}
+        {inner ? (
+          <motion.div
+            variants={variantsButton}
+            initial={"initial"}
+            animate={controlsInner}
+            onHoverStart={() => {}}
+            onHoverEnd={() => {}}
+            className="btn-inner"
           >
             {children}
-            {inner ? (
-              <motion.div
-                variants={variantsButton}
-                initial={"initial"}
-                animate={controlsInner}
-                onHoverStart={() => {}}
-                onHoverEnd={() => {}}
-                className="btn-inner"
-              >
-                {children}
-              </motion.div>
-            ) : null}
-          </motion.button>
-        </a>
-      ) : (
-        <Link
-          to={to}
-          target={target}
-          alt={alt}
-          lable={label}
-          className="btn-mobile"
-        >
-          <motion.button
-            animate={inner ? animate : undefined}
-            onHoverStart={() => {
-              controlsInner.start("animate");
-              cycle();
-            }}
-            onHoverEnd={() => {
-              cycle();
-              controlsInner.start("initial");
-            }}
-            transition={{
-              type: "tween",
-              duration: 0.5,
-            }}
-            data-link-text={dl}
-            className={`${
-              gl ? "btn" : "no-btn"
-            } ${checkButtonStyle} ${checkButtonSize}`}
-            onClick={onClick}
-            type={type}
-          >
-            {children}
-            {inner ? (
-              <motion.div
-                variants={variantsButton}
-                initial={"initial"}
-                animate={controlsInner}
-                onHoverStart={() => {}}
-                onHoverEnd={() => {}}
-                className="btn-inner"
-              >
-                {children}
-              </motion.div>
-            ) : null}
-          </motion.button>
-        </Link>
-      )}
+          </motion.div>
+        ) : null}
+      </motion.button>
     </>
   );
 };

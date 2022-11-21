@@ -108,16 +108,8 @@ export default function ErrorPage() {
         initial="hidden"
         animate="enter"
         exit="exit"
+        transition={{ type: "tween", duration: 1 }}
         className="main"
-        onAnimationStart={() => {
-          window.setBlurry.is = true;
-          setTimeout(() => {
-            window.setBlurry.is = false;
-            window.scrollTo(0, 0);
-          }, 1000);
-        }}
-        onAnimationEnd={() => {}}
-        //transition={{ type: "tween", duration: 1 }}
       >
         <section className="error__container">
           <Navbar main={false} />
