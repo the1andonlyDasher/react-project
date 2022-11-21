@@ -3,10 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
-import { motion, useAnimationControls, useCycle } from "framer-motion";
+import { motion,  useCycle } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 const logo = require("../images/logo.webp");
 
 gsap.registerPlugin(ScrollToPlugin);

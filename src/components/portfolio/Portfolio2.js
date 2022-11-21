@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "../button";
@@ -9,29 +9,8 @@ import "swiper/css/scrollbar";
 const image1 = require("../../images/page1.webp");
 const image2 = require("../../images/page2.webp");
 const image3 = require("../../images/page3.webp");
-let canvas;
 
-const useProgressiveImage = (src) => {
-  const [sourceLoaded, setSourceLoaded] = useState(null);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => setSourceLoaded(src);
-  }, [src]);
-
-  return sourceLoaded;
-};
-
-const Portfolio2 = ({
-  title,
-  subtitle,
-  sectionName,
-  id,
-  source,
-  placeholder,
-}) => {
-  const loaded = useProgressiveImage(source);
+const Portfolio2 = ({ title, subtitle, sectionName, id }) => {
   const ref = useRef([]);
   const pushRef = (el) => ref.current.push(el);
 

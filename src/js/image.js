@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { extend } from "@react-three/fiber";
+import { extend, Color } from "@react-three/fiber";
 import f from "../components/gl/gradient_f";
 import v from "../components/gl/v";
 

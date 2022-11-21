@@ -1,7 +1,6 @@
-import React, { useRef, Suspense, useMemo, useEffect } from "react";
+import React, { useRef, Suspense, useEffect } from "react";
 import { Canvas, useThree, extend } from "@react-three/fiber";
 import { useCycle, motion } from "framer-motion";
-import { LinearMipmapLinearFilter, RepeatWrapping, Vector3 } from "three";
 import "./image";
 import {
   Glitch,
@@ -13,26 +12,14 @@ import { GlitchMode, BlendFunction } from "postprocessing";
 import { GlitchPass } from "./glitchPass";
 import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
 import { useBreakpoints, useCurrentWidth } from "react-breakpoints-hook";
-import { Html, useProgress, useTexture, useIntersect } from "@react-three/drei";
+
 
 const bg = require("../images/bg2.webp");
 
 extend({ GlitchPass, FilmPass });
 
 function Plane(props) {
-  const texture = useTexture(props.img);
-  useMemo(() => {
-    texture.generateMipmaps = false;
-    texture.wrapS = texture.wrapT = RepeatWrapping;
-    texture.minFilter = LinearMipmapLinearFilter;
-    texture.needsUpdate = true;
-  }, [
-    texture.generateMipmaps,
-    texture.wrapS,
-    texture.wrapT,
-    texture.minFilter,
-    texture.needsUpdate,
-  ]);
+  // const texture = useTexture(props.img);
   const { viewport } = useThree();
   const { width, height, top, left } = document
     .getElementById("canvasWrapper")
@@ -67,7 +54,7 @@ function Plane(props) {
     >
       <planeGeometry attach="geometry" args={[1, 1]} />
       {/* <meshBasicMaterial attach="material" map={texture} /> */}
-      <button attach="material" texture={texture} />
+      <button attach="material" />
     </mesh>
   );
 }

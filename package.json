@@ -27,6 +27,7 @@
     "wouter": "^2.8.1"
   },
   "devDependencies": {
+    "compression-webpack-plugin": "^10.0.0",
     "gh-pages": "^4.0.0",
     "react-compress": "^3.6.4",
     "react-scripts": "5.0.1"

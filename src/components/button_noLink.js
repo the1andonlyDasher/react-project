@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { motion, useAnimationControls, useCycle } from "framer-motion";
 
 const STYLES = ["btn__primary", "btn__outline"];
