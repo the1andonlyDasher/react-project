@@ -33,10 +33,19 @@
   position: fixed;
   top: 0;
   left: 0;
-
+  padding: 0 1.5rem 0 1.5rem;
+  @include mq(small) {
+    padding: 0 2.5rem 0 2.5rem;
+  }
   @include mq(medium) {
     height: 120px;
-    padding: 1rem 15% 1rem 15%;
+    padding: 0 5% 0 5%;
+  }
+  @include mq(large) {
+    padding: 0 10% 0 10%;
+  }
+  @include mq(xl) {
+    padding: 0 15% 0 15%;
   }
 }
 
@@ -79,12 +88,15 @@
   @extend %flex-center;
   height: 100%;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .navbar__logo {
   background-color: transparent;
   padding: 0;
-  height: 90%;
+  height: 70%;
 }
 
 .navbar__logo img {
@@ -612,7 +624,11 @@ a {
   right: 5%;
   bottom: 5%;
   transition: ease-in-out 0.2s;
-
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  z-index: 12;
   @include mq(medium) {
     display: none;
   }
@@ -624,37 +640,37 @@ a {
   background: var(--cta);
 }
 
-.instant-nav {
-  width: 100%;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  z-index: 12;
-}
-
 .instant-nav ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   list-style-type: none;
   margin: 0;
-  padding: 0 0 1rem 0;
+  padding: 0;
 }
 
 .instant-nav ul li {
-  width: auto;
+  width: 50%;
   text-align: center;
-  padding: 1rem 3rem;
+  padding: 0;
   color: var(--clr-contrast-100);
   text-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
   box-shadow: 2px 2px 4px rgb(0 0 0 / 20%);
 }
+
+
+.instant-nav ul li a {
+  color:var(--clr-contrast-100);
+  width: 100%;
+  height: 100%;
+  padding: 1rem 3rem;
+}
+
 
 .instant-nav ul li i {
   font-size: 25px;
@@ -672,15 +688,12 @@ a {
 
 .instant-nav ul li {
   background-image: none;
-  background-color: var(--clr-contrast-100);
-  color: var(--clr-primary-300);
+  background-color: hsl(0, 0%, 1%);
+  color: var(--clr-contrast-100);
+  border-top: 1px solid #161616;
+  font-size: var(--fs-sub-small);
 }
 
 .instant-nav ul li:first-child {
-  background-image: -webkit-linear-gradient(
-    35deg,
-    var(--clr-secondary-200),
-    var(--clr-secondary-100)
-  );
-  color: var(--clr-contrast-100);
+  border-right: var(--clr-contrast-800) solid 2px;
 }

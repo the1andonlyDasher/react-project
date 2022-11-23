@@ -1,6 +1,6 @@
-import React, { useRef, Suspense, useEffect } from "react";
+import React, { useRef, Suspense } from "react";
+import * as THREE from "three"
 import { Canvas, useThree, extend } from "@react-three/fiber";
-import { useCycle, motion } from "framer-motion";
 import "./image";
 import {
   Glitch,
@@ -11,7 +11,7 @@ import {
 import { GlitchMode, BlendFunction } from "postprocessing";
 import { GlitchPass } from "./glitchPass";
 import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
-import { useBreakpoints, useCurrentWidth } from "react-breakpoints-hook";
+import { useCurrentWidth } from "react-breakpoints-hook";
 
 
 const bg = require("../images/bg2.webp");
@@ -19,16 +19,23 @@ const bg = require("../images/bg2.webp");
 extend({ GlitchPass, FilmPass });
 
 function Plane(props) {
-  // const texture = useTexture(props.img);
+
+  let vw = useCurrentWidth();
+
   const { viewport } = useThree();
   const { width, height, top, left } = document
     .getElementById("canvasWrapper")
     .getBoundingClientRect();
 
-  // This reference will give us direct access to the mesh
+
   const mesh = useRef();
-  // Return view, these are regular three.js elements expressed in JSX
-  // Subscribe this component to the render-loop, rotate the mesh every frame
+
+  // for mobile screens
+  const dark = new THREE.Color(0x0e0e0e);
+  const bright = new THREE.Color(0x202020);
+  // for desktop screens
+  const darker = new THREE.Color(0x040405);
+  const brighter = new THREE.Color(0x1b1b1c);
 
   return (
     <mesh
@@ -54,27 +61,11 @@ function Plane(props) {
     >
       <planeGeometry attach="geometry" args={[1, 1]} />
       {/* <meshBasicMaterial attach="material" map={texture} /> */}
-      <button attach="material" />
+      <button attach="material" uColorA={vw > 850 ? darker : dark} uColorB={vw > 850 ? brighter : bright}/>
     </mesh>
   );
 }
-const Loader = () => {
-  const ref = useRef();
-  const [animate, cycle] = useCycle(
-    {
-      opacity: 1,
-    },
-    { opacity: 0 }
-  );
-  useEffect(() => {
-    cycle();
-    return;
-  }, []);
 
-  return (
-    <motion.div animate={animate} ref={ref} className="loader"></motion.div>
-  );
-};
 
 export default function GL(props) {
   const windowRef = useRef(null);
@@ -157,13 +148,6 @@ export default function GL(props) {
     },
   };
   let width = useCurrentWidth();
-  let { xs, sm, md, lg, xl } = useBreakpoints({
-    xs: { min: 0, max: 299 },
-    sm: { min: 300, max: 499 },
-    md: { min: 500, max: 879 },
-    lg: { min: 880, max: 1599 },
-    xl: { min: 1600, max: null },
-  });
 
   return (
     <>
@@ -216,7 +200,7 @@ export default function GL(props) {
               <Scanline
                 blendFunction={BlendFunction.OVERLAY}
                 density={width > 850 ? 1.25 : 0.55}
-                opacity={0.05}
+                opacity={0.125}
               />
               <Noise opacity={0.02} />
             </EffectComposer>

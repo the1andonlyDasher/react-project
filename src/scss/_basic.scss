@@ -151,7 +151,7 @@ h1 {
 h2 {
   font-size: var(--fs-sub-big);
   position: relative;
-  font-family: "Fira Sans", sans-serif;
+  font-family: $ff-header;
   font-weight: 800;
   color: var(--clr-contrast-100);
   line-height: 1.3;

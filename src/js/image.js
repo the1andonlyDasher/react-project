@@ -3,18 +3,39 @@ import { extend, Color } from "@react-three/fiber";
 import f from "../components/gl/gradient_f";
 import v from "../components/gl/v";
 
+
+
+
+
+
+
+
 export default class Button extends THREE.ShaderMaterial {
   constructor() {
     super({
       uniforms: {
         iProg: { type: "f", value: 0 },
         iTime: { type: "f", value: 0.0 },
-        uColorA: { value: new THREE.Color(0x000000) },
-        uColorB: { value: new THREE.Color(0x222222) },
+        uColorA: { value: undefined },
+        uColorB: { value: undefined },
       },
       vertexShader: v,
       fragmentShader: f,
     });
+  }
+  get uColorA(){
+    return  this.uniforms.uColorA.value
+  }
+
+  set uColorA(v){
+    this.uniforms.uColorA.value = v
+  }
+  get uColorB(){
+    return  this.uniforms.uColorB.value
+  }
+
+  set uColorB(v){
+    this.uniforms.uColorB.value = v
   }
 }
 

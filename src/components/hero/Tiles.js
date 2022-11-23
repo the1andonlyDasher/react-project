@@ -28,15 +28,8 @@ const Tile = ({ i, id, children, mainText, fallbacksrc }) => {
   const inView = useInView(ref, { once: true });
 
   useEffect(() => {
-    setTimeout(() => {
       tileControls.start("entered");
-    }, 1500);
-    if (inView) {
-      tileControls.start("entered");
-    }
-
-    // console.log(inView, window.completedAnimation.status);
-  }, [tileControls, inView]);
+  }, [tileControls]);
 
   return (
     <motion.div

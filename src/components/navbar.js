@@ -5,6 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion,  useCycle } from "framer-motion";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMessage, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const logo = require("../images/logo.webp");
 
@@ -364,6 +366,12 @@ export default function Navbar({ main }) {
             </motion.ul>
           )}
         </div>
+      </motion.nav>
+      <motion.nav className="instant-nav">
+        <ul>
+          <li><a aria-label="call-button" href="tel:015730682333"><FontAwesomeIcon  icon={faPhone} /></a></li>
+          <li><a aria-label="message-button" href="#contact"><FontAwesomeIcon  icon={faMessage} /></a></li>
+        </ul>
       </motion.nav>
     </>
   );

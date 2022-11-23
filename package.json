@@ -37,7 +37,7 @@
   },
   "scripts": {
     "sass-dev": "npx sass --watch --style=expanded src/scss:src/css",
-    "sass-prod": "npx sass --watch --no-source-map --style=compressed src/scss:dist/css",
+    "sass-prod": "npx sass --watch --no-source-map --style=compressed src/scss:src/css",
     "start": "react-scripts start",
     "build": "react-scripts build && react-compress",
     "test": "react-scripts test",

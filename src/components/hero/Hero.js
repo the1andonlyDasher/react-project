@@ -92,7 +92,6 @@ export default function Hero() {
       <div className="container">
         <TileHeros />
         <motion.div
-          layout
           variants={variants_tame}
           initial="initial"
           animate="animate"

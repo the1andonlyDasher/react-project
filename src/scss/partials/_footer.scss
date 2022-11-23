@@ -45,9 +45,12 @@
   );
   width: 100%;
   height: auto;
-  padding: 2rem 0;
+  padding: 2rem 0 4rem 0;
   color: var(--clr-contrast-100);
   flex-direction: column;
+@include mq(medium){
+  padding: 2rem 0;
+}
 }
 
 .footer h5 {
