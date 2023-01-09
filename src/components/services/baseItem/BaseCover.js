@@ -27,7 +27,7 @@ export const BaseCover = ({ title, subtitle, backgroundImage, fa }) => {
         "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
         "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
       ],
-      zIndex: 0,
+
     },
     {
       filter: [
@@ -52,7 +52,7 @@ export const BaseCover = ({ title, subtitle, backgroundImage, fa }) => {
         "polygon(0% 100%, 100% 100%, 100% 90%, 0% 90%, 0% 81%, 100% 81%, 100% 70%, 0% 70%, 1% 38%, 100% 38%, 100% 26%, 0% 26%, 0% 16%, 100% 16%, 100% 10%, 0% 10%)",
         "polygon(0 100%, 0 100%, 0 100%, 0% 100%)",
       ],
-      zIndex: -1,
+
     }
   );
   const variants = {

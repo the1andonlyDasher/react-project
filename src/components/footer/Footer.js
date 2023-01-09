@@ -11,7 +11,7 @@ const Footer = () => {
             <Link
               data-link-text="Impressum"
               className="btn__outline"
-              to={"/ImprintPage"}
+              to={"/Impressum"}
             >
               Impressum
             </Link>
@@ -20,7 +20,7 @@ const Footer = () => {
             <Link
               data-link-text="Datenschutz"
               className="btn__outline"
-              to={"/DataPage"}
+              to={"/Datenschutz"}
             >
               Datenschutz
             </Link>

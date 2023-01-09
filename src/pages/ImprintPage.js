@@ -28,12 +28,6 @@ export default function ImprintPage(props) {
   );
   return (
     <>
-      <Navbar main={false} />
-      {/* <motion.ul className="transition">
-        {items.map((_, index) => (
-          <Item key={index} index={index} />
-        ))}
-      </motion.ul> */}
       <motion.main
         variants={variants}
         initial="hidden"
@@ -53,8 +47,7 @@ export default function ImprintPage(props) {
           </p>
           <h3>Kontakt</h3>
           <p>
-            Telefon: 089/1234567-8 <br></br>
-            Telefax: 089/1234567-9 <br></br>
+            Telefon: 015730862333 <br></br>
             E-Mail: kontakt@wickedhanddesign.de <br></br>
             Website: www.wickedhanddesign.de <br></br>
             Bei redaktionellen Inhalten: Verantwortlich nach § 55 Abs.2 RStV

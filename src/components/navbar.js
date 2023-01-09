@@ -10,7 +10,7 @@ import { faMessage, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const logo = require("../images/logo.webp");
 
-gsap.registerPlugin(ScrollToPlugin);
+// gsap.registerPlugin(ScrollToPlugin);
 
 export default function Navbar({ main }) {
   useEffect(() => {
@@ -173,11 +173,11 @@ export default function Navbar({ main }) {
     sequence();
     setClick(!click);
     const attribute = e.currentTarget.getAttribute("href");
-    gsap.to(window, {
-      duration: 0.55,
-      scrollTo: `${attribute.substring(0)}`,
-      ease: "Expo.easeOut",
-    });
+    // gsap.to(window, {
+    //   duration: 0.55,
+    //   scrollTo: `${attribute.substring(0)}`,
+    //   ease: "Expo.easeOut",
+    // });
   };
 
   const closeMobileMenuNoScroll = (e) => {
@@ -189,7 +189,8 @@ export default function Navbar({ main }) {
 
   const defaultItems = [...Array(4)];
   const texts = ["Home", "Leistungen", "Portfolio", "Kontakt"];
-  const links = ["#landing", "#cards", "#projects", "#contact"];
+  const links = ["/", "/Leistungen", "/Portfolio", "/Kontakt"];
+  const [textLinks, setLinks] = useState(links);
   const [items] = useState(defaultItems);
   const Item = ({
     index,
@@ -223,16 +224,16 @@ export default function Navbar({ main }) {
       </motion.li>
     ) : (
       <li key={index} className="navItem">
-        <div
+       <Link
           data-link-text={dtl}
           scroll={`${scroll ? true : false}`}
-          href={to}
+          to={to}
           data-attribute-page-target={pageTarget}
           className={className}
           onClick={closeMobileMenu}
         >
           {text}
-        </div>
+        </Link>
       </li>
     );
 
@@ -280,7 +281,7 @@ export default function Navbar({ main }) {
                   key={index}
                   index={index}
                   scroll={true}
-                  to={links[index]}
+                  to={textLinks[index]}
                   text={item[index]}
                   pageTarget={item[index]}
                   dtl={item[index]}
@@ -324,11 +325,11 @@ export default function Navbar({ main }) {
             >
               {texts.map((_, index, item) => (
                 <Item
-                  animate={true}
+                  animate={false}
                   key={index}
                   index={index}
                   scroll={true}
-                  to={links[index]}
+                  to={textLinks[index]}
                   text={item[index]}
                   pageTarget={item[index]}
                   dtl={item[index]}
@@ -370,7 +371,7 @@ export default function Navbar({ main }) {
       <motion.nav className="instant-nav">
         <ul>
           <li><a aria-label="call-button" href="tel:015730682333"><FontAwesomeIcon  icon={faPhone} /></a></li>
-          <li><a aria-label="message-button" href="#contact"><FontAwesomeIcon  icon={faMessage} /></a></li>
+          <li><a aria-label="message-button" href="/Kontakt"><FontAwesomeIcon  icon={faMessage} /></a></li>
         </ul>
       </motion.nav>
     </>
